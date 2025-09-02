@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu BAR GWAR</title>
+<style>
+  /* FONT */
+  @font-face {
+    font-family: 'JeanLuc';
+    src: url('JeanLuc-Webfonts/jeanlucweb-bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* LAYOUT */
+  body {
+    margin: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* pasek przewijania tylko w kontenerze PDF */
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #DA3365; /* rgb(218,51,101) */
+    padding: 10px 15px;
+  }
+
+  .topbar-text {
+    font-family: 'JeanLuc', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .flags {
+    display: flex;
+    gap: 10px;
+  }
+
+  .flags img {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    border: 1px solid white;  /* biała ramka */
+    border-radius: 2px;       /* radius 2px */
+  }
+
+  /* KLUCZOWA ZMIANA: kontener jako block + tylko pionowy scroll */
+  #pdfContainer {
+    flex: 1;
+    display: block;        /* zamiast flex */
+    overflow-y: auto;      /* pionowy scroll */
+    overflow-x: hidden;    /* bez poziomego */
+    background: black;
+    padding: 10px 0;
+  }
+
+  /* Każda strona jako <canvas> pod sobą */
+  canvas {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 100%;           /* dopasowanie do szerokości kontenera */
+    height: auto;          /* proporcje zachowane */
+    max-width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    .flags img { width: 30px; }
+    .topbar-text { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-text" id="topbarText">Zamówienia przyjmujemy przy barze</div>
+  <div class="flags">
+    <img src="images/pl.png" alt="PL" onclick="setLanguage('pl')">
+    <img src="images/en.png" alt="EN" onclick="setLanguage('en')">
+  </div>
+</div>
+
+<div id="pdfContainer"></div>
+
+<!-- PDF.js z CDN (sprawdzona wersja 2.x) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script>
+  const pdfContainer = document.getElementById('pdfContainer');
+  const topbarText = document.getElementById('topbarText');
+  let pdfDoc = null;
+  let currentLang = 'pl';
+
+  const texts = {
+    pl: "Zamówienia przyjmujemy przy barze",
+    en: "We order at the bar"
+  };
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    topbarText.textContent = texts[lang];
+    const url = (lang === 'pl') ? 'pdf/menu_pl.pdf' : 'pdf/menu_en.pdf';
+    loadPDF(url);
+  }
+
+  function loadPDF(url) {
+    pdfContainer.innerHTML = ""; // wyczyść stare strony
+    pdfjsLib.getDocument(url).promise.then(pdf => {
+      pdfDoc = pdf;
+      for (let i = 1; i <= pdf.numPages; i++) {
+        renderPage(i);
+      }
+    }).catch(err => {
+      console.error("PDF load error:", err);
+      alert("Nie udało się załadować PDF: " + url);
+    });
+  }
+
+  function renderPage(num) {
+    pdfDoc.getPage(num).then(page => {
+      // 1) Wyliczamy skalę tak, by szerokość strony = szerokość kontenera
+      const unscaled = page.getViewport({ scale: 1 });
+      const containerWidth = pdfContainer.clientWidth;
+      const scale = containerWidth / unscaled.width;
+      const viewport = page.getViewport({ scale });
+
+      // 2) Retina/HiDPI: rysujemy w wyższej rozdzielczości, ale CSS-owo zostawiamy szerokość kontenera
+      const outputScale = window.devicePixelRatio || 1;
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width  = Math.floor(viewport.width  * outputScale);
+      canvas.height = Math.floor(viewport.height * outputScale);
+
+      // Rozmiar widoczny w CSS (do layoutu / scrolla)
+      canvas.style.width  = viewport.width  + 'px';
+      canvas.style.height = viewport.height + 'px';
+
+      const transform = (outputScale !== 1) ? [outputScale, 0, 0, outputScale, 0, 0] : null;
+
+      pdfContainer.appendChild(canvas);
+
+      page.render({
+        canvasContext: ctx,
+        viewport: viewport,
+        transform: transform
+      });
+    });
+  }
+
+  // Re-render przy zmianie rozmiaru okna, żeby zachować szerokość=kontener i poprawny scroll
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      // przeładuj aktualny PDF i przerysuj wszystkie strony
+      const url = (currentLang === 'pl') ? 'pdf/menu_pl.pdf' : 'pdf/menu_en.pdf';
+      loadPDF(url);
+    }, 150);
+  });
+
+  // Start: polska wersja
+  setLanguage('pl');
+</script>
+
+</body>
+</html>
