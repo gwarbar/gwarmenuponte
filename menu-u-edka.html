@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>U Edka — Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/uedka/hk-grotesk.css" />
+<style>
+  :root {
+    --navy: #1F3A5F;
+    --navy-mute: #5A6F8A;
+    --red: #E63828;
+    --cream: #F4ECD4;
+    --ink: #1A1A1A;
+    --rule: rgba(26,26,26,0.14);
+    --paper: #FBF6E4;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--navy);
+    font-family: 'HK Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+  }
+
+  /* ── Header ─────────────────────────────── */
+  header.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--red);
+    margin-bottom: 20px;
+  }
+  header.top img { height: 56px; width: auto; display: block; }
+  .brand-marks {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-marks .x {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--navy-mute);
+  }
+  .brand-marks img.gwar { height: 44px; }
+  .lang-toggle {
+    display: flex;
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+  .lang-toggle button {
+    border: none;
+    background: transparent;
+    color: var(--navy);
+    padding: 8px 16px;
+    cursor: pointer;
+    font: inherit;
+    letter-spacing: inherit;
+  }
+  .lang-toggle button.active {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  /* ── Zapiekanka hero ────────────────────── */
+  .hero {
+    background: #fff;
+    border-radius: 18px;
+    padding: 24px 24px 8px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 14px rgba(31,58,95,0.08);
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    line-height: 0.86;
+    color: var(--ink);
+    font-size: clamp(40px, 9vw, 68px);
+  }
+  .hero-title .accent { color: var(--red); }
+  .hero-price {
+    text-align: right;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .hero-price .lbl {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+  }
+  .hero-price .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 9vw, 62px);
+    color: var(--red);
+  }
+  .hero-price .unit {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+  }
+  .story { margin: 14px 0 4px; max-width: 62ch; }
+  .story p {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    opacity: 0.86;
+    margin: 0 0 8px;
+  }
+  .story p:last-child { font-weight: 600; opacity: 0.95; margin-bottom: 0; }
+
+  .opt-rows { margin-top: 16px; border-top: 1px solid var(--rule); }
+  .opt-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 4px 12px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .opt-row .label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 19px;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+  }
+  .opt-row .items { font-size: 13.5px; color: var(--ink); opacity: 0.85; }
+  .opt-row .price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 17px;
+    color: var(--red);
+    font-variant-numeric: tabular-nums;
+  }
+  .opt-note {
+    text-align: right;
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--navy-mute);
+    padding: 6px 0 14px;
+  }
+
+  .baguette-block {
+    margin-top: 6px;
+    padding-top: 14px;
+    border-top: 2px solid var(--ink);
+    padding-bottom: 18px;
+  }
+  .baguette-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    margin-bottom: 8px;
+  }
+  .baguette-head h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.02em;
+    color: var(--red);
+    margin: 0;
+  }
+  .baguette-head span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .baguette-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .baguette-item:last-child { border-bottom: none; }
+  .baguette-item .name {
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .baguette-item .desc { font-size: 12.5px; line-height: 1.4; color: var(--ink); opacity: 0.8; }
+
+  /* ── Footer ─────────────────────────────── */
+  footer {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  footer .note {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy-mute);
+  }
+  footer .order {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-align: right;
+    max-width: 420px;
+    text-wrap: balance;
+  }
+  footer .foot-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  [data-lang-en] { display: none; }
+  html[data-lang="en"] [data-lang-pl] { display: none; }
+  html[data-lang="en"] [data-lang-en] { display: initial; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand-marks">
+      <img src="assets/uedka/uedka-logo.png" alt="U Edka" />
+      <span class="x">×</span>
+      <img class="gwar" src="assets/gwar-logo.png" alt="Bar Gwar" />
+    </div>
+    <div class="lang-toggle">
+      <button id="btn-pl" class="active" onclick="setLang('pl')">PL</button>
+      <button id="btn-en" onclick="setLang('en')">ENG</button>
+    </div>
+  </header>
+
+  <!-- ZAPIEKANKA -->
+  <section class="hero">
+    <div class="hero-top">
+      <div class="hero-title">
+        ZAPIEKANKA<br /><span class="accent">U EDKA</span>
+      </div>
+      <div class="hero-price">
+        <div class="lbl" data-lang-pl>CENA</div>
+        <div class="lbl" data-lang-en>PRICE</div>
+        <div class="num">19</div>
+        <div class="unit">ZŁ</div>
+      </div>
+    </div>
+
+    <div class="story">
+      <p data-lang-pl>W latach 70. Edward Gierek sprowadził do Polski francuską bagietkę. Reszta to już polska pomysłowość — ktoś dodał pieczarki, ser i zapiekł całość.</p>
+      <p data-lang-pl>Tak powstała legenda, która do dziś króluje na krakowskim Kazimierzu.</p>
+      <p data-lang-pl>My tylko pilnujemy, żeby smakowała tak, jak powinna. Bo jak zapiekanka — to tylko u Edka.</p>
+
+      <p data-lang-en>Zapiekanka — a toasted half-baguette piled with mushrooms and melted cheese, Poland's best-loved street food. In the 1970s, Edward Gierek brought the French baguette to Poland; the rest was Polish ingenuity.</p>
+      <p data-lang-en>A legend born in the PRL era that still reigns over Kraków's Kazimierz district.</p>
+      <p data-lang-en>We just make sure it tastes the way it should. Because if it's zapiekanka — it's only u Edka.</p>
+    </div>
+
+    <div class="opt-rows" id="opt-rows"></div>
+    <div class="opt-note" data-lang-pl>pudełko na wynos +1 zł</div>
+    <div class="opt-note" data-lang-en>takeaway box +1 zł</div>
+
+    <div class="baguette-block">
+      <div class="baguette-head">
+        <h3 data-lang-pl>BAGIETKI OD EDKA</h3>
+        <h3 data-lang-en>EDEK'S BAGUETTES</h3>
+        <span data-lang-pl>AUTORSKIE</span>
+        <span data-lang-en>SIGNATURE</span>
+      </div>
+      <div id="baguette-list"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-left">
+      <div class="note" data-lang-pl>Ceny w zł</div>
+      <div class="note" data-lang-en>Prices in PLN</div>
+    </div>
+    <div class="foot-right">
+      <div class="order">
+        <span data-lang-pl>Zamawiamy przy barze, odbieramy w lokalu obok</span>
+        <span data-lang-en>Order at the bar, pick up next door</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+function setLang(lang) {
+  document.documentElement.setAttribute('data-lang', lang);
+  document.getElementById('btn-pl').classList.toggle('active', lang === 'pl');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
+const OPTS = {
+  pl: [
+    { label: 'SOSY', price: '1 zł', items: 'keczup, majonez, czosnkowy, tysiąca wysp' },
+    { label: 'DODATKI', price: '2 zł', items: 'cebulka prażona, szczypiorek' },
+    { label: 'DODATKI WARZYWNE', price: '4 zł', items: 'kukurydza, jalapeño, ogórek kiszony' },
+    { label: 'DODATKI MIĘSNE', price: '6 zł', items: 'szynka, salami, kurczak, boczek' },
+  ],
+  en: [
+    { label: 'SAUCES', price: '1 zł', items: 'ketchup, mayo, garlic, thousand island' },
+    { label: 'TOPPINGS', price: '2 zł', items: 'crispy onion, chives' },
+    { label: 'VEG TOPPINGS', price: '4 zł', items: 'corn, jalapeño, pickle' },
+    { label: 'MEAT TOPPINGS', price: '6 zł', items: 'ham, salami, chicken, bacon' },
+  ],
+};
+
+const BAGUETTES = {
+  pl: [
+    { name: 'NA GUBAŁÓWCE', items: 'pieczarki, ser, ser wędzony, boczek, żurawina' },
+    { name: 'W HOTELU FORUM', items: 'mascarpone, pasta truflowa, pieczarki, ser, salami picante, jalapeño, keczup' },
+    { name: 'NA DZIAŁCE', items: 'pieczarki, ser, boczek, szparagi, sos czosnkowy' },
+  ],
+  en: [
+    { name: 'SMOKED CHEESE & CRANBERRY', items: 'mushrooms, cheese, smoked cheese, bacon, cranberry' },
+    { name: 'TRUFFLE & SPICY SALAMI', items: 'mascarpone, truffle paste, mushrooms, cheese, salami picante, jalapeño, ketchup' },
+    { name: 'ASPARAGUS & GARLIC', items: 'mushrooms, cheese, bacon, asparagus, garlic sauce' },
+  ],
+};
+
+function renderOpts(lang) {
+  const el = document.getElementById('opt-rows');
+  el.innerHTML = OPTS[lang].map(r => `
+    <div class="opt-row">
+      <span class="label">${r.label}</span>
+      <span class="items">${r.items}</span>
+      <span class="price">${r.price}</span>
+    </div>
+  `).join('');
+}
+
+function renderBaguettes(lang) {
+  const el = document.getElementById('baguette-list');
+  el.innerHTML = BAGUETTES[lang].map(b => `
+    <div class="baguette-item">
+      <span class="name">${b.name}</span>
+      <span class="desc">${b.items}</span>
+    </div>
+  `).join('');
+}
+
+renderOpts('pl');
+renderBaguettes('pl');
+
+const origSetLang = setLang;
+setLang = function(lang) {
+  origSetLang(lang);
+  renderOpts(lang);
+  renderBaguettes(lang);
+};
+</script>
+</body>
+</html>
