@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>Jak zamówić — Bar Gwar × U Edka</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/uedka/hk-grotesk.css" />
+<style>
+  :root {
+    --navy: #1F3A5F;
+    --navy-mute: #5A6F8A;
+    --red: #E63828;
+    --cream: #F4ECD4;
+    --ink: #1A1A1A;
+    --rule: rgba(26,26,26,0.14);
+    --paper: #FBF6E4;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--navy);
+    font-family: 'HK Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+  }
+
+  /* ── Header ─────────────────────────────── */
+  header.top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--red);
+    margin-bottom: 28px;
+  }
+  header.top img { height: 48px; width: auto; display: block; }
+  header.top .x {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--navy-mute);
+  }
+  header.top img.gwar { height: 38px; }
+
+  /* ── Hero ───────────────────────────────── */
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    line-height: 0.9;
+    color: var(--ink);
+    font-size: clamp(34px, 9vw, 52px);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .hero-title .accent { color: var(--red); }
+  .hero-sub {
+    text-align: center;
+    font-size: 15px;
+    color: var(--navy-mute);
+    max-width: 46ch;
+    margin: 0 auto 32px;
+    line-height: 1.5;
+  }
+
+  /* ── Steps ──────────────────────────────── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .step {
+    background: #fff;
+    border-radius: 16px;
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 16px;
+    align-items: start;
+    box-shadow: 0 2px 14px rgba(31,58,95,0.08);
+  }
+  .step .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    color: var(--red);
+    line-height: 1;
+    grid-row: span 2;
+    min-width: 40px;
+  }
+  .step h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-size: 21px;
+    color: var(--ink);
+    margin: 0;
+  }
+  .step p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.85;
+    margin: 2px 0 0;
+  }
+  .step .arrow {
+    text-align: center;
+    color: var(--navy-mute);
+    font-size: 18px;
+    margin: -6px 0;
+  }
+
+  /* ── Route map ──────────────────────────── */
+  .route-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 22px 8px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 14px rgba(31,58,95,0.08);
+  }
+  .route-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-size: 21px;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .route-card .route-sub {
+    font-size: 13px;
+    color: var(--navy-mute);
+    margin: 0 0 14px;
+  }
+  .route-map {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 4px 0 2px;
+    overflow: visible;
+  }
+  .route-map text {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+  }
+  .route-map .sub-txt {
+    font-family: 'HK Grotesk', system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+
+
+  /* ── CTA ────────────────────────────────── */
+  .cta-wrap { text-align: center; margin-bottom: 8px; }
+  .cta {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    padding: 16px 40px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(230,56,40,0.35);
+    transition: transform 0.15s ease;
+  }
+  .cta:active { transform: scale(0.97); }
+  .cta-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--navy-mute);
+  }
+
+  footer {
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy-mute);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <img class="gwar" src="assets/gwar-logo.png" alt="Bar Gwar" />
+    <span class="x">×</span>
+    <img src="assets/uedka/uedka-logo.png" alt="U Edka" />
+  </header>
+
+  <div class="hero-title">JAK TO<br /><span class="accent">DZIAŁA?</span></div>
+  <p class="hero-sub">Zamawiasz z telefonu, siedząc przy barze. Po jedzenie wychodzisz na chwilę — odbiór jest tuż obok, u Edka.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Zamawiasz w Gwarze</h3>
+      <p>Ze swojego telefonu, w naszym systemie zamówień. Nie musisz nigdzie iść ani stać w kolejce.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>Płacisz online, gotówką lub kartą</h3>
+      <p>Możesz zapłacić od razu w telefonie — szybko i bez czekania na kelnera. Możesz też zapłacić gotówką lub kartą na miejscu, przy odbiorze.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>Odbierasz sam, u Edka</h3>
+      <p>Gdy zamówienie będzie gotowe, wychodzisz z Gwaru i idziesz ok. 50 metrów wzdłuż ulicy — prosto do punktu U Edka.</p>
+    </div>
+  </div>
+
+  <div class="route-card">
+    <h3>Jak trafić do Edka</h3>
+    <p class="route-sub">Wychodzisz z Gwaru, skręcasz w prawo i idziesz prosto — mijasz dwa lokale, trzeci to Edek.</p>
+    <svg class="route-map" viewBox="0 0 380 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapka: od Bar Gwar w prawo, mijasz Charlotte i Bawietkę, dochodzisz do U Edka">
+      <!-- chodnik / trasa -->
+      <line x1="55" y1="100" x2="315" y2="100" stroke="#5A6F8A" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9" />
+      <polygon points="313,93 327,100 313,107" fill="#5A6F8A" />
+
+      <!-- łączniki do chodnika (krótkie kreski nad i pod etykietami, żeby nie przecinać liter) -->
+      <line x1="55" y1="72" x2="55" y2="76" stroke="#5A6F8A" stroke-width="2" />
+      <line x1="55" y1="95" x2="55" y2="100" stroke="#5A6F8A" stroke-width="2" />
+      <line x1="150" y1="77" x2="150" y2="81" stroke="#5A6F8A" stroke-width="2" />
+      <line x1="150" y1="95" x2="150" y2="100" stroke="#5A6F8A" stroke-width="2" />
+      <line x1="235" y1="77" x2="235" y2="81" stroke="#5A6F8A" stroke-width="2" />
+      <line x1="235" y1="95" x2="235" y2="100" stroke="#5A6F8A" stroke-width="2" />
+
+      <!-- BAR GWAR (start) -->
+      <rect x="35" y="32" width="40" height="40" rx="9" fill="#1F3A5F" />
+      <rect x="50" y="48" width="10" height="20" rx="2" fill="#FBF6E4" />
+      <!-- strzałka skrętu w prawo -->
+      <path d="M78 24 A13 13 0 0 1 92 38" stroke="#5A6F8A" stroke-width="2.5" fill="none" stroke-linecap="round" />
+      <polygon points="87,32 96,38 88,45" fill="#5A6F8A" />
+      <text x="55" y="90" text-anchor="middle" font-size="13" fill="#1F3A5F">GWAR</text>
+      <text class="sub-txt" x="55" y="128" text-anchor="middle" font-size="8.5" fill="#5A6F8A">wyjście, w prawo</text>
+
+      <!-- CHARLOTTE -->
+      <rect x="128" y="37" width="44" height="38" rx="7" fill="#FBF6E4" stroke="#1F3A5F" stroke-width="2" />
+      <rect x="144" y="49" width="12" height="26" rx="2" fill="none" stroke="#1F3A5F" stroke-width="1.5" />
+      <text x="150" y="90" text-anchor="middle" font-size="11.5" fill="#1F3A5F">CHARLOTTE</text>
+
+      <!-- BAWIETKA -->
+      <rect x="213" y="37" width="44" height="38" rx="7" fill="#FBF6E4" stroke="#1F3A5F" stroke-width="2" />
+      <rect x="229" y="49" width="12" height="26" rx="2" fill="none" stroke="#1F3A5F" stroke-width="1.5" />
+      <text x="235" y="90" text-anchor="middle" font-size="11.5" fill="#1F3A5F">BAWIETKA</text>
+
+      <!-- U EDKA (cel, pinezka) -->
+      <path d="M315 60c-9 0-16 7-16 16 0 12 16 28 16 28s16-16 16-28c0-9-7-16-16-16Z" fill="#E63828" />
+      <circle cx="315" cy="76" r="6.5" fill="#FBF6E4" />
+      <text x="315" y="128" text-anchor="middle" font-size="15" fill="#E63828">U EDKA</text>
+      <text class="sub-txt" x="315" y="141" text-anchor="middle" font-size="8.5" fill="#5A6F8A">tu odbierasz</text>
+
+      <!-- dystans -->
+      <text class="sub-txt" x="192" y="115" text-anchor="middle" font-size="9" font-style="italic" fill="#5A6F8A">~50 m</text>
+    </svg>
+  </div>
+
+  <div class="cta-wrap">
+    <a class="cta" href="https://uedka.goorder.pl/" target="_blank" rel="noopener">ZAMAWIAM →</a>
+    <div class="cta-note">Otworzy się system zamówień U Edka</div>
+  </div>
+
+  <footer>Bar Gwar × U Edka</footer>
+
+</div>
+</body>
+</html>
