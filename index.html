@@ -38,6 +38,7 @@
   "name": "U Edka — Zapiekanki w stylu PRL",
   "url": "https://uedka.gwar.bar/",
   "image": "https://uedka.gwar.bar/assets/uedka/uedka-og.jpg",
+  "sameAs": ["https://www.instagram.com/u.edka/"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Mostowa 4",
@@ -270,6 +271,17 @@
   }
   .order p { margin-left: auto; margin-right: auto; margin-bottom: 20px; }
 
+  /* ── Dostawa ────────────────────────────── */
+  .delivery { text-align: center; }
+  .delivery-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .delivery-links .btn { font-size: 19px; padding-left: 10px; padding-right: 10px; }
+
   footer {
     padding: 20px 0 40px;
     border-top: 1px solid var(--rule);
@@ -361,9 +373,22 @@
     </div>
   </section>
 
+  <!-- 8. DOSTAWA -->
+  <section class="delivery" id="dostawa">
+    <h2>Wolisz dostawę?</h2>
+    <div class="delivery-links">
+      <a class="btn" href="https://www.pyszne.pl/menu/u-edka?serviceType=delivery&amp;utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="pyszne">PYSZNE.PL</a>
+      <a class="btn" href="https://www.ubereats.com/pl/store/u-edka-zapiekanki-w-stylu-prl/ai5XWlP8QEGdjo5_uVWAbA?utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="ubereats">UBER EATS</a>
+      <a class="btn" href="https://wolt.com/pl/pol/krakow/restaurant/u-edka-zapiekanki-w-stylu-prl?utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="wolt">WOLT</a>
+      <a class="btn" href="https://glovoapp.com/pl/pl/krakow/stores/u-edka-zapiekanki-w-stylu-prl-kra?utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="glovo">GLOVO</a>
+      <a class="btn" href="https://food.bolt.eu/pl-pl/211-krakow/p/156396-u-edka-zapiekanki-w-stylu-prl/?utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="bolt">BOLT FOOD</a>
+    </div>
+  </section>
+
   <footer>
     <div>U Edka — Zapiekanki w stylu PRL · Mostowa 4, Kraków</div>
     <div class="links">
+      <a href="https://www.instagram.com/u.edka/" target="_blank" rel="noopener" data-track="instagram" data-track-location="stopka">Instagram</a>
       <a href="regulamin.html">Regulamin</a>
       <a href="polityka-prywatnosci.html">Polityka prywatności</a>
     </div>
@@ -373,7 +398,7 @@
 
 <script>
 // Kliknięcia CTA → dataLayer (GTM) oraz gtag (GA4 / Google Ads), jeśli jest wczytany.
-// Zdarzenia: wyznacz_trase, zobacz_menu, zamow_z_odbiorem (+ klik_telefon po dodaniu linku tel: z data-track).
+// Zdarzenia: wyznacz_trase, zobacz_menu, zamow_z_odbiorem, dostawa (cta_location = platforma) (+ klik_telefon po dodaniu linku tel: z data-track).
 window.dataLayer = window.dataLayer || [];
 document.addEventListener('click', function (e) {
   var el = e.target.closest('[data-track]');
