@@ -204,6 +204,7 @@
     background: var(--cream);
   }
   .photos .wide { grid-column: 1 / -1; }
+  .photos .food { aspect-ratio: 3 / 2; }
 
   /* ── Menu ───────────────────────────────── */
   .menu-card {
@@ -415,7 +416,9 @@
 
   <!-- 3. ZDJĘCIA -->
   <section class="photos" aria-label="Zdjęcia lokalu">
-    <!-- zdjęcia zapiekanek: wstawić tutaj jako pierwsze (class="wide" = pełna szerokość) -->
+    <img class="wide food" src="assets/uedka/foto/zapiekanki-720.webp" srcset="assets/uedka/foto/zapiekanki-720.webp 720w, assets/uedka/foto/zapiekanki-1400.webp 1400w" sizes="(min-width: 760px) 680px, 90vw" width="1400" height="933" loading="lazy" decoding="async" alt="Zapiekanki U Edka z różnymi dodatkami ułożone obok siebie" />
+    <img class="food" src="assets/uedka/foto/zapiekanka-klasyczna-800.webp" srcset="assets/uedka/foto/zapiekanka-klasyczna-480.webp 480w, assets/uedka/foto/zapiekanka-klasyczna-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="533" loading="lazy" decoding="async" alt="Zapiekanka z pieczarkami, serem, keczupem, prażoną cebulką i szczypiorkiem" />
+    <img class="food" src="assets/uedka/foto/zapiekanka-ogorek-800.webp" srcset="assets/uedka/foto/zapiekanka-ogorek-480.webp 480w, assets/uedka/foto/zapiekanka-ogorek-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="533" loading="lazy" decoding="async" alt="Zapiekanka z ogórkiem kiszonym, białym sosem, prażoną cebulką i szczypiorkiem" />
     <img src="assets/uedka/foto/wnetrze-800.webp" srcset="assets/uedka/foto/wnetrze-480.webp 480w, assets/uedka/foto/wnetrze-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="1067" loading="lazy" decoding="async" alt="Wnętrze U Edka – bar, stołki w czerwoną kratkę i sklepienie z plakatami w stylu PRL" />
     <img src="assets/uedka/foto/sufit-800.webp" srcset="assets/uedka/foto/sufit-480.webp 480w, assets/uedka/foto/sufit-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="1067" loading="lazy" decoding="async" alt="Sklepienie lokalu U Edka pomalowane w hasła i szyldy w stylu PRL" />
   </section>
