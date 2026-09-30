@@ -203,17 +203,9 @@
     border-radius: 14px;
     background: var(--cream);
   }
-  .photos .wide { grid-column: 1 / -1; }
-  .photos .food { aspect-ratio: 3 / 2; }
 
   /* ── Menu ───────────────────────────────── */
-  .menu-card {
-    background: #fff;
-    border-radius: 18px;
-    padding: 22px 20px 8px;
-    box-shadow: 0 2px 14px rgba(31,58,95,0.08);
-  }
-  .menu-board { display: block; margin-bottom: 14px; }
+  .menu-board { display: block; }
   .menu-board img {
     display: block;
     width: 100%;
@@ -221,100 +213,6 @@
     border-radius: 14px;
     background: var(--cream);
   }
-  .menu-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 16px;
-  }
-  .menu-top h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
-    font-size: clamp(34px, 9vw, 52px);
-    line-height: 0.88;
-    color: var(--ink);
-    margin: 0;
-  }
-  .menu-top h3 .accent { color: var(--red); }
-  .menu-price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(44px, 11vw, 60px);
-    line-height: 0.85;
-    color: var(--red);
-    white-space: nowrap;
-  }
-  .menu-price small { font-size: 0.4em; color: var(--ink); letter-spacing: 0.08em; }
-  .opt-rows { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid var(--rule); }
-  .opt-rows li {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2px 12px;
-    align-items: baseline;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  .opt-rows .label {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 19px;
-    letter-spacing: 0.03em;
-  }
-  .opt-rows .price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    color: var(--red);
-  }
-  .opt-rows .items { grid-column: 1 / -1; font-size: 14px; opacity: 0.85; }
-  .opt-note {
-    text-align: right;
-    font-style: italic;
-    font-size: 12.5px;
-    color: var(--navy-mute);
-    padding: 6px 0 14px;
-    max-width: none;
-    margin: 0;
-  }
-  .baguettes { border-top: 2px solid var(--ink); padding: 14px 0 10px; }
-  .baguettes-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 4px;
-  }
-  .baguettes h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
-    font-size: 26px;
-    letter-spacing: 0.02em;
-    color: var(--red);
-    margin: 0;
-  }
-  .baguettes-head span {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.16em;
-  }
-  .baguettes ul { list-style: none; margin: 0; padding: 0; }
-  .baguettes li { padding: 9px 0; border-bottom: 1px solid var(--rule); }
-  .baguettes li:last-child { border-bottom: 0; }
-  .baguettes .name {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  .baguettes .price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    letter-spacing: 0;
-    color: var(--red);
-    white-space: nowrap;
-  }
-  .baguettes .desc { font-size: 14px; line-height: 1.4; opacity: 0.8; }
   .menu-foot {
     font-size: 11px;
     font-weight: 600;
@@ -362,6 +260,14 @@
 
   /* ── Zamówienie ─────────────────────────── */
   .order { text-align: center; }
+  .order .food-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    background: var(--cream);
+    margin-bottom: 28px;
+  }
   .order p { margin-left: auto; margin-right: auto; margin-bottom: 20px; }
 
   footer {
@@ -377,11 +283,7 @@
   @media (min-width: 640px) {
     .hero { padding: 56px 0 56px; }
     section { padding: 52px 0; }
-    .menu-card { padding: 28px 28px 10px; }
     .photos { gap: 14px; }
-    .opt-rows li { grid-template-columns: auto 1fr auto; }
-    .opt-rows .items { grid-column: auto; order: 0; }
-    .opt-rows .price { order: 1; }
     .hours, .product { text-align: center; }
     .hours dl, .product p { margin-left: auto; margin-right: auto; }
   }
@@ -416,9 +318,6 @@
 
   <!-- 3. ZDJĘCIA -->
   <section class="photos" aria-label="Zdjęcia lokalu">
-    <img class="wide food" src="assets/uedka/foto/zapiekanki-720.webp" srcset="assets/uedka/foto/zapiekanki-720.webp 720w, assets/uedka/foto/zapiekanki-1400.webp 1400w" sizes="(min-width: 760px) 680px, 90vw" width="1400" height="933" loading="lazy" decoding="async" alt="Zapiekanki U Edka z różnymi dodatkami ułożone obok siebie" />
-    <img class="food" src="assets/uedka/foto/zapiekanka-klasyczna-800.webp" srcset="assets/uedka/foto/zapiekanka-klasyczna-480.webp 480w, assets/uedka/foto/zapiekanka-klasyczna-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="533" loading="lazy" decoding="async" alt="Zapiekanka z pieczarkami, serem, keczupem, prażoną cebulką i szczypiorkiem" />
-    <img class="food" src="assets/uedka/foto/zapiekanka-ogorek-800.webp" srcset="assets/uedka/foto/zapiekanka-ogorek-480.webp 480w, assets/uedka/foto/zapiekanka-ogorek-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="533" loading="lazy" decoding="async" alt="Zapiekanka z ogórkiem kiszonym, białym sosem, prażoną cebulką i szczypiorkiem" />
     <img src="assets/uedka/foto/wnetrze-800.webp" srcset="assets/uedka/foto/wnetrze-480.webp 480w, assets/uedka/foto/wnetrze-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="1067" loading="lazy" decoding="async" alt="Wnętrze U Edka – bar, stołki w czerwoną kratkę i sklepienie z plakatami w stylu PRL" />
     <img src="assets/uedka/foto/sufit-800.webp" srcset="assets/uedka/foto/sufit-480.webp 480w, assets/uedka/foto/sufit-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="1067" loading="lazy" decoding="async" alt="Sklepienie lokalu U Edka pomalowane w hasła i szyldy w stylu PRL" />
   </section>
@@ -429,32 +328,7 @@
     <a class="menu-board" href="assets/uedka/foto/tablica-menu-1400.webp" aria-label="Powiększ tablicę z menu">
       <img src="assets/uedka/foto/tablica-menu-720.webp" srcset="assets/uedka/foto/tablica-menu-720.webp 720w, assets/uedka/foto/tablica-menu-1400.webp 1400w" sizes="(min-width: 760px) 680px, 90vw" width="1400" height="794" loading="lazy" decoding="async" alt="Tablica z menu U Edka: zapiekanka 19 zł, sosy, dodatki i bagietki U Edka po 32 zł" />
     </a>
-    <div class="menu-card">
-      <div class="menu-top">
-        <h3>ZAPIEKANKA<br /><span class="accent">U EDKA</span></h3>
-        <div class="menu-price">19 <small>ZŁ</small></div>
-      </div>
-
-      <ul class="opt-rows">
-        <li><span class="label">SOSY</span><span class="price">1 zł</span><span class="items">keczup, majonez, czosnkowy, tysiąca wysp</span></li>
-        <li><span class="label">DODATKI</span><span class="price">2 zł</span><span class="items">cebulka prażona, szczypiorek</span></li>
-        <li><span class="label">DODATKI WARZYWNE</span><span class="price">4 zł</span><span class="items">kukurydza, jalapeño, ogórek kiszony</span></li>
-        <li><span class="label">DODATKI MIĘSNE</span><span class="price">6 zł</span><span class="items">szynka, salami, kurczak, boczek</span></li>
-      </ul>
-      <p class="opt-note">pudełko na wynos +1 zł</p>
-
-      <div class="baguettes">
-        <div class="baguettes-head">
-          <h3>BAGIETKA U EDKA</h3>
-        </div>
-        <ul>
-          <li><span class="name">Na Gubałówce <span class="price">32 zł</span></span><span class="desc">ser, pieczarki, ser wędzony, smażony boczek, żurawina</span></li>
-          <li><span class="name">W Hotelu Forum <span class="price">32 zł</span></span><span class="desc">ser, pieczarki, mascarpone, pasta truflowa, salami picante, jalapeño, keczup</span></li>
-          <li><span class="name">Na Hawajach <span class="price">32 zł</span></span><span class="desc">ser, pieczarki, szynka, ananas, sos czosnkowy</span></li>
-        </ul>
-      </div>
-    </div>
-    <p class="menu-foot">Ceny w zł</p>
+    <p class="menu-foot">Ceny w zł · dotknij tablicy, aby powiększyć</p>
   </section>
 
   <!-- 5. LOKALIZACJA -->
@@ -479,6 +353,7 @@
 
   <!-- 7. ZAMÓWIENIE -->
   <section class="order" id="zamow">
+    <img class="food-photo" src="assets/uedka/foto/zapiekanki-720.webp" srcset="assets/uedka/foto/zapiekanki-720.webp 720w, assets/uedka/foto/zapiekanki-1400.webp 1400w" sizes="(min-width: 760px) 680px, 90vw" width="1400" height="933" loading="lazy" decoding="async" alt="Zapiekanki U Edka z różnymi dodatkami ułożone obok siebie" />
     <h2>Chcesz zamówić wcześniej?</h2>
     <p>Zamów z odbiorem osobistym.</p>
     <div class="cta-stack">
