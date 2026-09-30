@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>U Edka – Zapiekanki w stylu PRL | Mostowa 4, Kraków Kazimierz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="U Edka – zapiekanki w stylu PRL na krakowskim Kazimierzu. Mostowa 4, Kraków. Otwarte codziennie do późna. Wyznacz trasę lub zamów z odbiorem osobistym." />
+<link rel="canonical" href="https://uedka.gwar.bar/landing" />
+<meta name="theme-color" content="#FBF6E4" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pl_PL" />
+<meta property="og:site_name" content="U Edka" />
+<meta property="og:title" content="U Edka – Zapiekanki w stylu PRL" />
+<meta property="og:description" content="Zapiekanki na krakowskim Kazimierzu. Mostowa 4, Kraków." />
+<meta property="og:url" content="https://uedka.gwar.bar/landing" />
+<meta property="og:image" content="https://uedka.gwar.bar/assets/uedka/uedka-og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Logo U Edka" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/png" href="assets/uedka/favicon.png" />
+<link rel="apple-touch-icon" href="assets/uedka/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/uedka/hk-grotesk.css" />
+
+<!-- TRACKING: tu wklej tag Google (GA4 / Google Ads) lub kontener GTM.
+     Kliknięcia CTA są już wysyłane jako zdarzenia – patrz skrypt na końcu strony. -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FastFoodRestaurant",
+  "name": "U Edka — Zapiekanki w stylu PRL",
+  "url": "https://uedka.gwar.bar/landing",
+  "image": "https://uedka.gwar.bar/assets/uedka/uedka-og.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Mostowa 4",
+    "addressLocality": "Kraków",
+    "addressCountry": "PL"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "13:00",
+      "closes": "00:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "12:00",
+      "closes": "00:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "12:00",
+      "closes": "23:00"
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --navy: #1F3A5F;
+    --navy-mute: #5A6F8A;
+    --red: #E63828;
+    --cream: #F4ECD4;
+    --ink: #1A1A1A;
+    --rule: rgba(26,26,26,0.14);
+    --paper: #FBF6E4;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'HK Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  section { padding: 36px 0; border-top: 1px solid var(--rule); }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    font-size: clamp(34px, 9vw, 48px);
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  h2 .accent { color: var(--red); }
+  p {
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0 0 10px;
+    max-width: 58ch;
+  }
+
+  /* ── Przyciski ──────────────────────────── */
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    padding: 17px 24px 15px;
+    border-radius: 999px;
+    border: 2px solid var(--navy);
+    color: var(--navy);
+    background: transparent;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+  .btn-primary {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+    font-size: 26px;
+    padding: 20px 24px 18px;
+    box-shadow: 0 6px 18px rgba(230,56,40,0.35);
+  }
+  .btn-navy {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  /* ── Hero ───────────────────────────────── */
+  .hero {
+    padding: 28px 0 36px;
+    text-align: center;
+    border-top: 0;
+  }
+  .hero h1 { margin: 0; font-weight: 400; }
+  .hero h1 img {
+    display: block;
+    width: min(100%, 400px);
+    height: auto;
+    margin: 0 auto;
+  }
+  .hero h1 .tagline {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 8.6vw, 44px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-top: 18px;
+  }
+  .hero .addr {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 12px auto 22px;
+    max-width: none;
+  }
+  .cta-stack {
+    display: grid;
+    gap: 12px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .cta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .cta-row .btn { font-size: 19px; padding-left: 10px; padding-right: 10px; }
+
+  /* ── Menu ───────────────────────────────── */
+  .menu-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px 20px 8px;
+    box-shadow: 0 2px 14px rgba(31,58,95,0.08);
+  }
+  .menu-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .menu-top h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: clamp(34px, 9vw, 52px);
+    line-height: 0.88;
+    color: var(--ink);
+    margin: 0;
+  }
+  .menu-top h3 .accent { color: var(--red); }
+  .menu-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 11vw, 60px);
+    line-height: 0.85;
+    color: var(--red);
+    white-space: nowrap;
+  }
+  .menu-price small { font-size: 0.4em; color: var(--ink); letter-spacing: 0.08em; }
+  .opt-rows { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+  .opt-rows li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 12px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .opt-rows .label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 19px;
+    letter-spacing: 0.03em;
+  }
+  .opt-rows .price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--red);
+  }
+  .opt-rows .items { grid-column: 1 / -1; font-size: 14px; opacity: 0.85; }
+  .opt-note {
+    text-align: right;
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--navy-mute);
+    padding: 6px 0 14px;
+    max-width: none;
+    margin: 0;
+  }
+  .baguettes { border-top: 2px solid var(--ink); padding: 14px 0 10px; }
+  .baguettes-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .baguettes h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: 0.02em;
+    color: var(--red);
+    margin: 0;
+  }
+  .baguettes-head span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+  }
+  .baguettes ul { list-style: none; margin: 0; padding: 0; }
+  .baguettes li { padding: 9px 0; border-bottom: 1px solid var(--rule); }
+  .baguettes li:last-child { border-bottom: 0; }
+  .baguettes .name {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .baguettes .desc { font-size: 14px; line-height: 1.4; opacity: 0.8; }
+  .menu-foot {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy-mute);
+    margin: 12px 0 0;
+  }
+
+  /* ── Lokalizacja ────────────────────────── */
+  .location { text-align: center; }
+  .location address {
+    font-style: normal;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 8vw, 40px);
+    line-height: 1;
+    color: var(--red);
+    margin: 0 0 22px;
+  }
+  .location .cta-stack { max-width: 420px; }
+
+  /* ── Godziny ────────────────────────────── */
+  .hours dl {
+    margin: 0;
+    max-width: 420px;
+  }
+  .hours .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 17px;
+  }
+  .hours dt { font-weight: 700; color: var(--navy); }
+  .hours dd { margin: 0; font-variant-numeric: tabular-nums; }
+
+  /* ── Zamówienie ─────────────────────────── */
+  .order { text-align: center; }
+  .order p { margin-left: auto; margin-right: auto; margin-bottom: 20px; }
+
+  footer {
+    padding: 20px 0 40px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 12px;
+    color: var(--navy-mute);
+  }
+  footer a { color: inherit; }
+  footer .links { margin-top: 8px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  @media (min-width: 640px) {
+    .hero { padding: 56px 0 56px; }
+    section { padding: 52px 0; }
+    .menu-card { padding: 28px 28px 10px; }
+    .opt-rows li { grid-template-columns: auto 1fr auto; }
+    .opt-rows .items { grid-column: auto; order: 0; }
+    .opt-rows .price { order: 1; }
+    .hours, .product { text-align: center; }
+    .hours dl, .product p { margin-left: auto; margin-right: auto; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <h1>
+      <img src="assets/uedka/uedka-logo-landing.webp" alt="U Edka" width="800" height="171" fetchpriority="high" />
+      <span class="tagline">Zapiekanki w stylu PRL</span>
+    </h1>
+    <p class="addr">Mostowa 4 · Kraków · Kazimierz</p>
+
+    <div class="cta-stack">
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=U+Edka%2C+Mostowa+4%2C+Krak%C3%B3w" data-track="wyznacz_trase" data-track-location="hero">WYZNACZ TRASĘ</a>
+      <div class="cta-row">
+        <a class="btn" href="#menu" data-track="zobacz_menu" data-track-location="hero">ZOBACZ MENU</a>
+        <a class="btn" href="https://uedka.goorder.pl/" target="_blank" rel="noopener" data-track="zamow_z_odbiorem" data-track-location="hero">ZAMÓW Z ODBIOREM</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PRODUKT -->
+  <section class="product">
+    <h2>Zapiekanki <span class="accent">na Kazimierzu</span></h2>
+    <p>Zapiekanka to zapieczona połówka bagietki z pieczarkami i serem – legenda z czasów PRL, która do dziś króluje na krakowskim Kazimierzu.</p>
+    <p>U Edka zjesz ją przy ulicy Mostowej 4. Pilnujemy, żeby smakowała tak, jak powinna.</p>
+  </section>
+
+  <!-- 3. ZDJĘCIA – sekcja do dodania, gdy w projekcie pojawią się zdjęcia zapiekanek / lokalu
+       (loading="lazy", z atrybutami width/height). -->
+
+  <!-- 4. MENU -->
+  <section id="menu">
+    <h2>Menu</h2>
+    <div class="menu-card">
+      <div class="menu-top">
+        <h3>ZAPIEKANKA<br /><span class="accent">U EDKA</span></h3>
+        <div class="menu-price">19 <small>ZŁ</small></div>
+      </div>
+
+      <ul class="opt-rows">
+        <li><span class="label">SOSY</span><span class="price">1 zł</span><span class="items">keczup, majonez, czosnkowy, tysiąca wysp</span></li>
+        <li><span class="label">DODATKI</span><span class="price">2 zł</span><span class="items">cebulka prażona, szczypiorek</span></li>
+        <li><span class="label">DODATKI WARZYWNE</span><span class="price">4 zł</span><span class="items">kukurydza, jalapeño, ogórek kiszony</span></li>
+        <li><span class="label">DODATKI MIĘSNE</span><span class="price">6 zł</span><span class="items">szynka, salami, kurczak, boczek</span></li>
+      </ul>
+      <p class="opt-note">pudełko na wynos +1 zł</p>
+
+      <div class="baguettes">
+        <div class="baguettes-head">
+          <h3>BAGIETKI OD EDKA</h3>
+          <span>AUTORSKIE</span>
+        </div>
+        <ul>
+          <li><span class="name">Na Gubałówce</span><span class="desc">pieczarki, ser, ser wędzony, boczek, żurawina</span></li>
+          <li><span class="name">W Hotelu Forum</span><span class="desc">mascarpone, pasta truflowa, pieczarki, ser, salami picante, jalapeño, keczup</span></li>
+          <li><span class="name">Na działce</span><span class="desc">pieczarki, ser, boczek, szparagi, sos czosnkowy</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="menu-foot">Ceny w zł</p>
+  </section>
+
+  <!-- 5. LOKALIZACJA -->
+  <section class="location" id="lokalizacja">
+    <h2>Znajdziesz nas na Kazimierzu</h2>
+    <address>Mostowa 4, Kraków</address>
+    <div class="cta-stack">
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=U+Edka%2C+Mostowa+4%2C+Krak%C3%B3w" data-track="wyznacz_trase" data-track-location="lokalizacja">WYZNACZ TRASĘ</a>
+    </div>
+  </section>
+
+  <!-- 6. GODZINY -->
+  <section class="hours" id="godziny">
+    <h2>Godziny otwarcia</h2>
+    <dl>
+      <div class="row"><dt>Pon–Pt</dt><dd>13:00–00:00</dd></div>
+      <div class="row"><dt>Sobota</dt><dd>12:00–00:00</dd></div>
+      <div class="row"><dt>Niedziela</dt><dd>12:00–23:00</dd></div>
+    </dl>
+  </section>
+
+  <!-- 7. ZAMÓWIENIE -->
+  <section class="order" id="zamow">
+    <h2>Chcesz zamówić wcześniej?</h2>
+    <p>Zamów z odbiorem osobistym.</p>
+    <div class="cta-stack">
+      <a class="btn btn-navy" href="https://uedka.goorder.pl/" target="_blank" rel="noopener" data-track="zamow_z_odbiorem" data-track-location="zamowienie">ZAMÓW Z ODBIOREM</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>U Edka — Zapiekanki w stylu PRL · Mostowa 4, Kraków</div>
+    <div class="links">
+      <a href="regulamin.html">Regulamin</a>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+// Kliknięcia CTA → dataLayer (GTM) oraz gtag (GA4 / Google Ads), jeśli jest wczytany.
+// Zdarzenia: wyznacz_trase, zobacz_menu, zamow_z_odbiorem (+ klik_telefon po dodaniu linku tel: z data-track).
+window.dataLayer = window.dataLayer || [];
+document.addEventListener('click', function (e) {
+  var el = e.target.closest('[data-track]');
+  if (!el) return;
+  var params = { cta_location: el.getAttribute('data-track-location') || '' };
+  window.dataLayer.push({ event: el.getAttribute('data-track'), cta_location: params.cta_location });
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', el.getAttribute('data-track'), params);
+  }
+});
+</script>
+</body>
+</html>
