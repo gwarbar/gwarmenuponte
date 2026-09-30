@@ -185,7 +185,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-  .cta-row .btn { font-size: 19px; padding-left: 10px; padding-right: 10px; }
+  .cta-row .btn, .btn-small { font-size: 19px; padding-left: 10px; padding-right: 10px; }
 
   /* ── Zdjęcia ────────────────────────────── */
   .photos {
@@ -318,6 +318,7 @@
         <a class="btn" href="#menu" data-track="zobacz_menu" data-track-location="hero">ZOBACZ MENU</a>
         <a class="btn" href="https://uedka.goorder.pl/" target="_blank" rel="noopener" data-track="zamow_z_odbiorem" data-track-location="hero">ZAMÓW Z ODBIOREM</a>
       </div>
+      <a class="btn btn-small" href="#dostawa" data-track="zamow_z_dostawa" data-track-location="hero">ZAMÓW Z DOSTAWĄ</a>
     </div>
   </section>
 
@@ -398,7 +399,7 @@
 
 <script>
 // Kliknięcia CTA → dataLayer (GTM) oraz gtag (GA4 / Google Ads), jeśli jest wczytany.
-// Zdarzenia: wyznacz_trase, zobacz_menu, zamow_z_odbiorem, dostawa (cta_location = platforma) (+ klik_telefon po dodaniu linku tel: z data-track).
+// Zdarzenia: wyznacz_trase, zobacz_menu, zamow_z_odbiorem, zamow_z_dostawa, dostawa (cta_location = platforma), instagram (+ klik_telefon po dodaniu linku tel: z data-track).
 window.dataLayer = window.dataLayer || [];
 document.addEventListener('click', function (e) {
   var el = e.target.closest('[data-track]');
