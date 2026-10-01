@@ -23,10 +23,8 @@
 <link rel="icon" type="image/png" href="assets/uedka/favicon.png" />
 <link rel="apple-touch-icon" href="assets/uedka/apple-touch-icon.png" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/uedka/hk-grotesk.css" />
+<link rel="preload" href="assets/uedka/fonts/BebasNeue-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/uedka/fonts/BebasNeue-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
 
 <!-- TRACKING: tu wklej tag Google (GA4 / Google Ads) lub kontener GTM.
      Kliknięcia CTA są już wysyłane jako zdarzenia – patrz skrypt na końcu strony. -->
@@ -69,6 +67,22 @@
 </script>
 
 <style>
+  @font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(assets/uedka/fonts/BebasNeue-latin-ext.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(assets/uedka/fonts/BebasNeue-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
   :root {
     --navy: #1F3A5F;
     --navy-mute: #5A6F8A;
@@ -84,7 +98,7 @@
     margin: 0; padding: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: 'HK Grotesk', system-ui, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -307,7 +321,7 @@
   <!-- 1. HERO -->
   <section class="hero">
     <h1>
-      <img src="assets/uedka/uedka-logo-landing.webp" alt="U Edka" width="800" height="171" fetchpriority="high" />
+      <img src="assets/uedka/uedka-logo-landing-800.png" srcset="assets/uedka/uedka-logo-landing-400.png 400w, assets/uedka/uedka-logo-landing-800.png 800w" sizes="(min-width: 440px) 400px, calc(100vw - 40px)" alt="U Edka" width="800" height="171" fetchpriority="high" />
       <span class="tagline">Zapiekanki w stylu PRL</span>
     </h1>
     <p class="addr">Mostowa 4 · Kraków · Kazimierz</p>
@@ -331,15 +345,15 @@
 
   <!-- 3. ZDJĘCIA -->
   <section class="photos" aria-label="Zdjęcia lokalu">
-    <img src="assets/uedka/foto/wnetrze-800.webp" srcset="assets/uedka/foto/wnetrze-480.webp 480w, assets/uedka/foto/wnetrze-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="1067" loading="lazy" decoding="async" alt="Wnętrze U Edka – bar, stołki w czerwoną kratkę i sklepienie z plakatami w stylu PRL" />
-    <img src="assets/uedka/foto/sufit-800.webp" srcset="assets/uedka/foto/sufit-480.webp 480w, assets/uedka/foto/sufit-800.webp 800w" sizes="(min-width: 760px) 335px, 45vw" width="800" height="1067" loading="lazy" decoding="async" alt="Sklepienie lokalu U Edka pomalowane w hasła i szyldy w stylu PRL" />
+    <img src="assets/uedka/foto/wnetrze-800.webp" srcset="assets/uedka/foto/wnetrze-320.webp 320w, assets/uedka/foto/wnetrze-480.webp 480w, assets/uedka/foto/wnetrze-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="Wnętrze U Edka – bar, stołki w czerwoną kratkę i sklepienie z plakatami w stylu PRL" />
+    <img src="assets/uedka/foto/sufit-800.webp" srcset="assets/uedka/foto/sufit-320.webp 320w, assets/uedka/foto/sufit-480.webp 480w, assets/uedka/foto/sufit-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="Sklepienie lokalu U Edka pomalowane w hasła i szyldy w stylu PRL" />
   </section>
 
   <!-- 4. MENU -->
   <section id="menu">
     <h2>Menu</h2>
     <a class="menu-board" href="assets/uedka/foto/tablica-menu-1400.webp" aria-label="Powiększ tablicę z menu">
-      <img src="assets/uedka/foto/tablica-menu-720.webp" srcset="assets/uedka/foto/tablica-menu-720.webp 720w, assets/uedka/foto/tablica-menu-1400.webp 1400w" sizes="(min-width: 760px) 680px, 90vw" width="1400" height="794" loading="lazy" decoding="async" alt="Tablica z menu U Edka: zapiekanka 19 zł, sosy, dodatki i bagietki U Edka po 32 zł" />
+      <img src="assets/uedka/foto/tablica-menu-720.webp" srcset="assets/uedka/foto/tablica-menu-480.webp 480w, assets/uedka/foto/tablica-menu-720.webp 720w, assets/uedka/foto/tablica-menu-1400.webp 1400w" sizes="(min-width: 760px) 680px, calc(100vw - 40px)" width="1400" height="794" loading="lazy" decoding="async" alt="Tablica z menu U Edka: zapiekanka 19 zł, sosy, dodatki i bagietki U Edka po 32 zł" />
     </a>
     <p class="menu-foot">Ceny w zł · dotknij tablicy, aby powiększyć</p>
   </section>
@@ -348,7 +362,7 @@
   <section class="location" id="lokalizacja">
     <h2>Znajdziesz nas na Kazimierzu</h2>
     <address>Mostowa 4, Kraków</address>
-    <img class="storefront" src="assets/uedka/foto/wejscie-800.webp" srcset="assets/uedka/foto/wejscie-480.webp 480w, assets/uedka/foto/wejscie-800.webp 800w" sizes="(min-width: 460px) 420px, 90vw" width="800" height="1067" loading="lazy" decoding="async" alt="Wejście do lokalu U Edka przy ulicy Mostowej 4 w Krakowie – czerwony neon i kolorowe okiennice z zapiekankami" />
+    <img class="storefront" src="assets/uedka/foto/wejscie-800.webp" srcset="assets/uedka/foto/wejscie-480.webp 480w, assets/uedka/foto/wejscie-640.webp 640w, assets/uedka/foto/wejscie-800.webp 800w" sizes="(min-width: 460px) 420px, calc(100vw - 40px)" width="800" height="1067" loading="lazy" decoding="async" alt="Wejście do lokalu U Edka przy ulicy Mostowej 4 w Krakowie – czerwony neon i kolorowe okiennice z zapiekankami" />
     <div class="cta-stack">
       <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=U+Edka%2C+Mostowa+4%2C+Krak%C3%B3w" data-track="wyznacz_trase" data-track-location="lokalizacja">WYZNACZ TRASĘ</a>
     </div>
@@ -366,7 +380,7 @@
 
   <!-- 7. ZAMÓWIENIE -->
   <section class="order" id="zamow">
-    <img class="food-photo" src="assets/uedka/foto/zapiekanki-720.webp" srcset="assets/uedka/foto/zapiekanki-720.webp 720w, assets/uedka/foto/zapiekanki-1400.webp 1400w" sizes="(min-width: 760px) 680px, 90vw" width="1400" height="933" loading="lazy" decoding="async" alt="Zapiekanki U Edka z różnymi dodatkami ułożone obok siebie" />
+    <img class="food-photo" src="assets/uedka/foto/zapiekanki-720.webp" srcset="assets/uedka/foto/zapiekanki-480.webp 480w, assets/uedka/foto/zapiekanki-720.webp 720w, assets/uedka/foto/zapiekanki-1400.webp 1400w" sizes="(min-width: 760px) 680px, calc(100vw - 40px)" width="1400" height="933" loading="lazy" decoding="async" alt="Zapiekanki U Edka z różnymi dodatkami ułożone obok siebie" />
     <h2>Chcesz zamówić wcześniej?</h2>
     <p>Zamów z odbiorem osobistym.</p>
     <div class="cta-stack">
