@@ -4,6 +4,15 @@
 <meta charset="utf-8" />
 <title>U Edka – Polish zapiekanka, PRL style | Mostowa 4, Kraków Kazimierz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17300910083"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17300910083');
+</script>
 <meta name="description" content="U Edka – zapiekanka, Poland's classic street food, PRL style, in Kraków's Kazimierz. Mostowa 4, Kraków. Open daily until late. Get directions or order for pickup." />
 <link rel="canonical" href="https://uedka.gwar.bar/en" />
 <link rel="alternate" hreflang="pl" href="https://uedka.gwar.bar/" />
@@ -30,8 +39,7 @@
 <link rel="preload" href="assets/uedka/fonts/BebasNeue-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/uedka/fonts/BebasNeue-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
 
-<!-- TRACKING: tu wklej tag Google (GA4 / Google Ads) lub kontener GTM.
-     Kliknięcia CTA są już wysyłane jako zdarzenia – patrz skrypt na końcu strony. -->
+<!-- Kliknięcia CTA są wysyłane jako zdarzenia gtag – patrz skrypt na końcu strony. -->
 
 <script type="application/ld+json">
 {
@@ -529,16 +537,17 @@
 </main>
 
 <script>
-// Kliknięcia CTA → dataLayer (GTM) oraz gtag (GA4 / Google Ads), jeśli jest wczytany.
+// Kliknięcia CTA → gtag (Google Ads AW-17300910083); bez gtag → dataLayer.
 // Zdarzenia: wyznacz_trase, zobacz_menu, zamow_z_odbiorem, zamow_z_dostawa, dostawa (cta_location = platforma), instagram (+ klik_telefon po dodaniu linku tel: z data-track).
 window.dataLayer = window.dataLayer || [];
 document.addEventListener('click', function (e) {
   var el = e.target.closest('[data-track]');
   if (!el) return;
   var params = { cta_location: el.getAttribute('data-track-location') || '', page_lang: document.documentElement.lang };
-  window.dataLayer.push({ event: el.getAttribute('data-track'), cta_location: params.cta_location, page_lang: params.page_lang });
   if (typeof window.gtag === 'function') {
     window.gtag('event', el.getAttribute('data-track'), params);
+  } else {
+    window.dataLayer.push({ event: el.getAttribute('data-track'), cta_location: params.cta_location, page_lang: params.page_lang });
   }
 });
 </script>
