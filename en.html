@@ -1,26 +1,27 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>U Edka – Zapiekanki w stylu PRL | Mostowa 4, Kraków Kazimierz</title>
+<title>U Edka – Polish zapiekanka, PRL style | Mostowa 4, Kraków Kazimierz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="U Edka – zapiekanki w stylu PRL na krakowskim Kazimierzu. Mostowa 4, Kraków. Otwarte codziennie do późna. Wyznacz trasę lub zamów z odbiorem osobistym." />
-<link rel="canonical" href="https://uedka.gwar.bar/" />
+<meta name="description" content="U Edka – zapiekanka, Poland's classic street food, PRL style, in Kraków's Kazimierz. Mostowa 4, Kraków. Open daily until late. Get directions or order for pickup." />
+<link rel="canonical" href="https://uedka.gwar.bar/en" />
 <link rel="alternate" hreflang="pl" href="https://uedka.gwar.bar/" />
 <link rel="alternate" hreflang="en" href="https://uedka.gwar.bar/en" />
 <link rel="alternate" hreflang="x-default" href="https://uedka.gwar.bar/" />
 <meta name="theme-color" content="#FBF6E4" />
 
 <meta property="og:type" content="website" />
-<meta property="og:locale" content="pl_PL" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:locale:alternate" content="pl_PL" />
 <meta property="og:site_name" content="U Edka" />
-<meta property="og:title" content="U Edka – Zapiekanki w stylu PRL" />
-<meta property="og:description" content="Zapiekanki na krakowskim Kazimierzu. Mostowa 4, Kraków." />
-<meta property="og:url" content="https://uedka.gwar.bar/" />
+<meta property="og:title" content="U Edka – Polish zapiekanka, PRL style" />
+<meta property="og:description" content="Zapiekanka in Kraków's Kazimierz. Mostowa 4, Kraków." />
+<meta property="og:url" content="https://uedka.gwar.bar/en" />
 <meta property="og:image" content="https://uedka.gwar.bar/assets/uedka/uedka-og.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Logo U Edka" />
+<meta property="og:image:alt" content="U Edka logo" />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="icon" type="image/png" href="assets/uedka/favicon.png" />
@@ -37,7 +38,7 @@
   "@context": "https://schema.org",
   "@type": "FastFoodRestaurant",
   "name": "U Edka — Zapiekanki w stylu PRL",
-  "url": "https://uedka.gwar.bar/",
+  "url": "https://uedka.gwar.bar/en",
   "image": "https://uedka.gwar.bar/assets/uedka/uedka-og.jpg",
   "sameAs": ["https://www.instagram.com/u.edka/"],
   "address": {
@@ -250,6 +251,46 @@
   }
 
   /* ── Menu ───────────────────────────────── */
+  .menu-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px 20px 6px;
+    box-shadow: 0 2px 14px rgba(31,58,95,0.08);
+  }
+  .menu-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .menu-top h3, .menu-price {
+    font-family: 'Bebas Neue', 'Bebas Fallback', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 0.9;
+    margin: 0;
+  }
+  .menu-top h3 { font-size: 34px; color: var(--ink); }
+  .menu-top h3 .accent, .menu-price { color: var(--red); }
+  .menu-price { font-size: 40px; white-space: nowrap; }
+  .menu-price small { font-size: 0.45em; color: var(--ink); }
+  .baguette-top { margin-top: 18px; padding-top: 16px; border-top: 2px solid var(--ink); }
+  .menu-lead { font-size: 14px; margin: 8px 0 6px; opacity: 0.85; }
+  .menu-group { padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .menu-group:last-child { border-bottom: 0; }
+  .menu-group h4 {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .menu-group h4 span { color: var(--red); white-space: nowrap; letter-spacing: 0; text-transform: none; }
+  .menu-group p { font-size: 14px; line-height: 1.4; margin: 3px 0 0; opacity: 0.8; }
+  .menu-foot a { color: inherit; }
   .menu-board { display: block; }
   .menu-board img {
     display: block;
@@ -349,98 +390,139 @@
 <body>
 <main class="wrap">
 
-  <nav class="lang-switch" aria-label="Język">
-    <a href="/en" hreflang="en" lang="en" data-track="jezyk" data-track-location="en">English</a>
+  <nav class="lang-switch" aria-label="Language">
+    <a href="/" hreflang="pl" lang="pl" data-track="jezyk" data-track-location="pl">Polski</a>
   </nav>
 
   <!-- 1. HERO -->
   <section class="hero">
     <h1>
       <img src="assets/uedka/uedka-logo-landing-800.png" srcset="assets/uedka/uedka-logo-landing-400.png 400w, assets/uedka/uedka-logo-landing-800.png 800w" sizes="(min-width: 440px) 400px, calc(100vw - 40px)" alt="U Edka" width="800" height="171" fetchpriority="high" />
-      <span class="tagline">Zapiekanki w stylu PRL</span>
+      <span class="tagline">Polish zapiekanka, PRL style</span>
     </h1>
     <p class="addr">Mostowa 4 · Kraków · Kazimierz</p>
 
     <div class="cta-stack">
-      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=U+Edka%2C+Mostowa+4%2C+Krak%C3%B3w" data-track="wyznacz_trase" data-track-location="hero">WYZNACZ TRASĘ</a>
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=U+Edka%2C+Mostowa+4%2C+Krak%C3%B3w" data-track="wyznacz_trase" data-track-location="hero">GET DIRECTIONS</a>
       <div class="cta-row">
-        <a class="btn" href="#menu" data-track="zobacz_menu" data-track-location="hero">ZOBACZ MENU</a>
-        <a class="btn" href="https://uedka.goorder.pl/" target="_blank" rel="noopener" data-track="zamow_z_odbiorem" data-track-location="hero">ZAMÓW Z ODBIOREM</a>
+        <a class="btn" href="#menu" data-track="zobacz_menu" data-track-location="hero">SEE THE MENU</a>
+        <a class="btn" href="https://uedka.goorder.pl/" target="_blank" rel="noopener" data-track="zamow_z_odbiorem" data-track-location="hero">ORDER FOR PICKUP</a>
       </div>
-      <a class="btn btn-small" href="#dostawa" data-track="zamow_z_dostawa" data-track-location="hero">ZAMÓW Z DOSTAWĄ</a>
+      <a class="btn btn-small" href="#dostawa" data-track="zamow_z_dostawa" data-track-location="hero">ORDER DELIVERY</a>
     </div>
   </section>
 
-  <!-- 2. PRODUKT -->
+  <!-- 2. PRODUCT -->
   <section class="product">
-    <h2>Zapiekanki <span class="accent">na Kazimierzu</span></h2>
-    <p>Zapiekanka to zapieczona połówka bagietki z pieczarkami i serem – legenda z czasów PRL, która do dziś króluje na krakowskim Kazimierzu.</p>
-    <p>U Edka zjesz ją przy ulicy Mostowej 4. Pilnujemy, żeby smakowała tak, jak powinna.</p>
+    <h2>Zapiekanka <span class="accent">in Kazimierz</span></h2>
+    <p>Zapiekanka – a toasted half-baguette piled with mushrooms and melted cheese, Poland's best-loved street food. A legend born in the PRL era that still reigns over Kraków's Kazimierz district.</p>
+    <p>Find it at U Edka, Mostowa 4. We just make sure it tastes the way it should.</p>
   </section>
 
-  <!-- 3. ZDJĘCIA -->
-  <section class="photos" aria-label="Zdjęcia lokalu">
-    <img src="assets/uedka/foto/wnetrze-800.webp" srcset="assets/uedka/foto/wnetrze-320.webp 320w, assets/uedka/foto/wnetrze-480.webp 480w, assets/uedka/foto/wnetrze-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="Wnętrze U Edka – bar, stołki w czerwoną kratkę i sklepienie z plakatami w stylu PRL" />
-    <img src="assets/uedka/foto/sufit-800.webp" srcset="assets/uedka/foto/sufit-320.webp 320w, assets/uedka/foto/sufit-480.webp 480w, assets/uedka/foto/sufit-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="Sklepienie lokalu U Edka pomalowane w hasła i szyldy w stylu PRL" />
+  <!-- 3. PHOTOS -->
+  <section class="photos" aria-label="Photos of the place">
+    <img src="assets/uedka/foto/wnetrze-800.webp" srcset="assets/uedka/foto/wnetrze-320.webp 320w, assets/uedka/foto/wnetrze-480.webp 480w, assets/uedka/foto/wnetrze-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="Inside U Edka – the bar, red gingham stools and a vaulted ceiling covered in PRL-style posters" />
+    <img src="assets/uedka/foto/sufit-800.webp" srcset="assets/uedka/foto/sufit-320.webp 320w, assets/uedka/foto/sufit-480.webp 480w, assets/uedka/foto/sufit-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="The vaulted ceiling at U Edka painted with PRL-style slogans and signs" />
   </section>
 
   <!-- 4. MENU -->
   <section id="menu">
     <h2>Menu</h2>
-    <a class="menu-board" href="assets/uedka/foto/tablica-menu-1400.webp" aria-label="Powiększ tablicę z menu">
-      <img src="assets/uedka/foto/tablica-menu-720.webp" srcset="assets/uedka/foto/tablica-menu-480.webp 480w, assets/uedka/foto/tablica-menu-720.webp 720w, assets/uedka/foto/tablica-menu-1400.webp 1400w" sizes="(min-width: 760px) 680px, calc(100vw - 40px)" width="1400" height="794" loading="lazy" decoding="async" alt="Tablica z menu U Edka: zapiekanka 19 zł, sosy, dodatki i bagietki U Edka po 32 zł" />
-    </a>
-    <p class="menu-foot">Ceny w zł · dotknij tablicy, aby powiększyć</p>
+    <div class="menu-card">
+      <div class="menu-top">
+        <h3>Zapiekanka <span class="accent">U Edka</span></h3>
+        <div class="menu-price">19 <small>zł</small></div>
+      </div>
+      <p class="menu-lead">Toasted half-baguette with mushrooms and melted cheese.</p>
+
+      <div class="menu-group">
+        <h4>Sauces <span>1 zł</span></h4>
+        <p>Ketchup · mayonnaise · garlic sauce · thousand island</p>
+      </div>
+      <div class="menu-group">
+        <h4>Toppings <span>2 zł</span></h4>
+        <p>Crispy fried onion · chives</p>
+      </div>
+      <div class="menu-group">
+        <h4>Veggie topping <span>4 zł</span></h4>
+        <p>Corn · jalapeño · pickled cucumber</p>
+      </div>
+      <div class="menu-group">
+        <h4>Meat topping <span>6 zł</span></h4>
+        <p>Ham · salami · chicken · bacon</p>
+      </div>
+      <div class="menu-group">
+        <h4>Takeaway box <span>1 zł</span></h4>
+      </div>
+
+      <div class="menu-top baguette-top">
+        <h3>Our <span class="accent">compositions</span></h3>
+        <div class="menu-price">32 <small>zł</small></div>
+      </div>
+      <div class="menu-group">
+        <h4>Na Gubałówce</h4>
+        <p>Cheese, mushrooms, smoked cheese, fried bacon, cranberry</p>
+      </div>
+      <div class="menu-group">
+        <h4>W Hotelu Forum</h4>
+        <p>Cheese, mushrooms, mascarpone, truffle paste, salami picante, jalapeño, ketchup</p>
+      </div>
+      <div class="menu-group">
+        <h4>Na Hawajach</h4>
+        <p>Cheese, mushrooms, ham, pineapple, garlic sauce</p>
+      </div>
+    </div>
+    <p class="menu-foot">Prices in PLN · <a href="assets/uedka/foto/tablica-menu-1400.webp" hreflang="pl">original menu board (Polish)</a></p>
   </section>
 
-  <!-- 5. LOKALIZACJA -->
+  <!-- 5. LOCATION -->
   <section class="location" id="lokalizacja">
-    <h2>Znajdziesz nas na Kazimierzu</h2>
+    <h2>Find us in Kazimierz</h2>
     <address>Mostowa 4, Kraków</address>
-    <img class="storefront" src="assets/uedka/foto/wejscie-800.webp" srcset="assets/uedka/foto/wejscie-480.webp 480w, assets/uedka/foto/wejscie-640.webp 640w, assets/uedka/foto/wejscie-800.webp 800w" sizes="(min-width: 460px) 420px, calc(100vw - 40px)" width="800" height="1067" loading="lazy" decoding="async" alt="Wejście do lokalu U Edka przy ulicy Mostowej 4 w Krakowie – czerwony neon i kolorowe okiennice z zapiekankami" />
+    <img class="storefront" src="assets/uedka/foto/wejscie-800.webp" srcset="assets/uedka/foto/wejscie-480.webp 480w, assets/uedka/foto/wejscie-640.webp 640w, assets/uedka/foto/wejscie-800.webp 800w" sizes="(min-width: 460px) 420px, calc(100vw - 40px)" width="800" height="1067" loading="lazy" decoding="async" alt="The entrance to U Edka at Mostowa 4 in Kraków – a red neon sign and colourful shutters with zapiekanka illustrations" />
     <div class="cta-stack">
-      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=U+Edka%2C+Mostowa+4%2C+Krak%C3%B3w" data-track="wyznacz_trase" data-track-location="lokalizacja">WYZNACZ TRASĘ</a>
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=U+Edka%2C+Mostowa+4%2C+Krak%C3%B3w" data-track="wyznacz_trase" data-track-location="lokalizacja">GET DIRECTIONS</a>
     </div>
   </section>
 
-  <!-- 6. GODZINY -->
+  <!-- 6. HOURS -->
   <section class="hours" id="godziny">
-    <h2>Godziny otwarcia</h2>
+    <h2>Opening hours</h2>
     <dl>
-      <div class="row"><dt>Pon–Pt</dt><dd>13:00–00:00</dd></div>
-      <div class="row"><dt>Sobota</dt><dd>12:00–00:00</dd></div>
-      <div class="row"><dt>Niedziela</dt><dd>12:00–23:00</dd></div>
+      <div class="row"><dt>Mon–Fri</dt><dd>13:00–00:00</dd></div>
+      <div class="row"><dt>Saturday</dt><dd>12:00–00:00</dd></div>
+      <div class="row"><dt>Sunday</dt><dd>12:00–23:00</dd></div>
     </dl>
   </section>
 
-  <!-- 7. ZAMÓWIENIE -->
+  <!-- 7. ORDER -->
   <section class="order" id="zamow">
-    <img class="food-photo" src="assets/uedka/foto/zapiekanki-720.webp" srcset="assets/uedka/foto/zapiekanki-480.webp 480w, assets/uedka/foto/zapiekanki-720.webp 720w, assets/uedka/foto/zapiekanki-1400.webp 1400w" sizes="(min-width: 760px) 680px, calc(100vw - 40px)" width="1400" height="933" loading="lazy" decoding="async" alt="Zapiekanki U Edka z różnymi dodatkami ułożone obok siebie" />
-    <h2>Chcesz zamówić wcześniej?</h2>
-    <p>Zamów z odbiorem osobistym.</p>
+    <img class="food-photo" src="assets/uedka/foto/zapiekanki-720.webp" srcset="assets/uedka/foto/zapiekanki-480.webp 480w, assets/uedka/foto/zapiekanki-720.webp 720w, assets/uedka/foto/zapiekanki-1400.webp 1400w" sizes="(min-width: 760px) 680px, calc(100vw - 40px)" width="1400" height="933" loading="lazy" decoding="async" alt="U Edka zapiekanki with different toppings, side by side" />
+    <h2>Want to order ahead?</h2>
+    <p>Order online and pick it up yourself. The ordering page is in Polish.</p>
     <div class="cta-stack">
-      <a class="btn btn-navy" href="https://uedka.goorder.pl/" target="_blank" rel="noopener" data-track="zamow_z_odbiorem" data-track-location="zamowienie">ZAMÓW Z ODBIOREM</a>
+      <a class="btn btn-navy" href="https://uedka.goorder.pl/" target="_blank" rel="noopener" data-track="zamow_z_odbiorem" data-track-location="zamowienie">ORDER FOR PICKUP</a>
     </div>
   </section>
 
-  <!-- 8. DOSTAWA -->
+  <!-- 8. DELIVERY -->
   <section class="delivery" id="dostawa">
-    <h2>Wolisz dostawę?</h2>
+    <h2>Prefer delivery?</h2>
     <div class="delivery-links">
-      <a class="btn" href="https://www.pyszne.pl/menu/u-edka?serviceType=delivery&amp;utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="pyszne">PYSZNE.PL</a>
-      <a class="btn" href="https://www.ubereats.com/pl/store/u-edka-zapiekanki-w-stylu-prl/ai5XWlP8QEGdjo5_uVWAbA?utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="ubereats">UBER EATS</a>
-      <a class="btn" href="https://wolt.com/pl/pol/krakow/restaurant/u-edka-zapiekanki-w-stylu-prl?utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="wolt">WOLT</a>
-      <a class="btn" href="https://glovoapp.com/pl/pl/krakow/stores/u-edka-zapiekanki-w-stylu-prl-kra?utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="glovo">GLOVO</a>
-      <a class="btn" href="https://food.bolt.eu/pl-pl/211-krakow/p/156396-u-edka-zapiekanki-w-stylu-prl/?utm_source=uedka.gwar.bar&amp;utm_medium=referral" target="_blank" rel="noopener" data-track="dostawa" data-track-location="bolt">BOLT FOOD</a>
+      <a class="btn" href="https://www.pyszne.pl/menu/u-edka?serviceType=delivery&amp;utm_source=uedka.gwar.bar&amp;utm_medium=referral&amp;utm_content=en" target="_blank" rel="noopener" data-track="dostawa" data-track-location="pyszne">PYSZNE.PL</a>
+      <a class="btn" href="https://www.ubereats.com/pl-en/store/u-edka-zapiekanki-w-stylu-prl/ai5XWlP8QEGdjo5_uVWAbA?utm_source=uedka.gwar.bar&amp;utm_medium=referral&amp;utm_content=en" target="_blank" rel="noopener" data-track="dostawa" data-track-location="ubereats">UBER EATS</a>
+      <a class="btn" href="https://wolt.com/en/pol/krakow/restaurant/u-edka-zapiekanki-w-stylu-prl?utm_source=uedka.gwar.bar&amp;utm_medium=referral&amp;utm_content=en" target="_blank" rel="noopener" data-track="dostawa" data-track-location="wolt">WOLT</a>
+      <a class="btn" href="https://glovoapp.com/pl/pl/krakow/stores/u-edka-zapiekanki-w-stylu-prl-kra?utm_source=uedka.gwar.bar&amp;utm_medium=referral&amp;utm_content=en" target="_blank" rel="noopener" data-track="dostawa" data-track-location="glovo">GLOVO</a>
+      <a class="btn" href="https://food.bolt.eu/en/211-krakow/p/156396-u-edka-zapiekanki-w-stylu-prl/?utm_source=uedka.gwar.bar&amp;utm_medium=referral&amp;utm_content=en" target="_blank" rel="noopener" data-track="dostawa" data-track-location="bolt">BOLT FOOD</a>
     </div>
   </section>
 
   <footer>
-    <div>U Edka — Zapiekanki w stylu PRL · Mostowa 4, Kraków</div>
+    <div>U Edka — Polish zapiekanka, PRL style · Mostowa 4, Kraków</div>
     <div class="links">
       <a href="https://www.instagram.com/u.edka/" target="_blank" rel="noopener" data-track="instagram" data-track-location="stopka">Instagram</a>
-      <a href="regulamin.html">Regulamin</a>
-      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="regulamin.html" hreflang="pl">Terms (Polish)</a>
+      <a href="polityka-prywatnosci.html" hreflang="pl">Privacy policy (Polish)</a>
     </div>
   </footer>
 
