@@ -1,0 +1,4 @@
+# GitHub Pages (Jekyll): pliki, które nie mają być publikowane na uedka.gwar.bar
+exclude:
+  - CLAUDE.md
+  - .claude
