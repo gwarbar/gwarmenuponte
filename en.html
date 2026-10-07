@@ -4,6 +4,11 @@
 <meta charset="utf-8" />
 <title>U Edka – Polish zapiekanka, PRL style | Mostowa 4, Kraków Kazimierz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>
+  // Podpowiedź języka: tylko podświetla przełącznik, niczego nie przekierowuje.
+  try { var l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+    if (l.indexOf('pl') === 0) document.documentElement.classList.add('show-lang-hint'); } catch (e) {}
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17300910083"></script>
 <script>
@@ -183,9 +188,15 @@
   /* ── Język ─────────────────────────────── */
   .lang-switch {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
-    padding-top: 12px;
+    padding: 12px 0 8px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
   }
+  section[id] { scroll-margin-top: 56px; }
   .lang-switch a {
     font-size: 13px;
     font-weight: 700;
@@ -196,6 +207,14 @@
     border: 2px solid var(--navy);
     border-radius: 999px;
   }
+  .lang-hint {
+    display: none;
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .show-lang-hint .lang-hint { display: inline; }
 
   /* ── Hero ───────────────────────────────── */
   .hero {
@@ -399,6 +418,7 @@
 <main class="wrap">
 
   <nav class="lang-switch" aria-label="Language">
+    <span class="lang-hint" lang="pl">Wolisz po polsku? →</span>
     <a href="/" hreflang="pl" lang="pl" data-track="jezyk" data-track-location="pl">Polski</a>
   </nav>
 
@@ -421,14 +441,14 @@
   </section>
 
   <!-- 2. PRODUCT -->
-  <section class="product" id="zapiekanki">
+  <section class="product">
     <h2>Zapiekanka <span class="accent">in Kazimierz</span></h2>
     <p>Zapiekanka – a toasted half-baguette piled with mushrooms and melted cheese, Poland's best-loved street food. A legend born in the PRL era that still reigns over Kraków's Kazimierz district.</p>
     <p>Find it at U Edka, Mostowa 4. We just make sure it tastes the way it should.</p>
   </section>
 
   <!-- 3. PHOTOS -->
-  <section class="photos" id="lokal" aria-label="Photos of the place">
+  <section class="photos" aria-label="Photos of the place">
     <img src="assets/uedka/foto/wnetrze-800.webp" srcset="assets/uedka/foto/wnetrze-320.webp 320w, assets/uedka/foto/wnetrze-480.webp 480w, assets/uedka/foto/wnetrze-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="Inside U Edka – the bar, red gingham stools and a vaulted ceiling covered in PRL-style posters" />
     <img src="assets/uedka/foto/sufit-800.webp" srcset="assets/uedka/foto/sufit-320.webp 320w, assets/uedka/foto/sufit-480.webp 480w, assets/uedka/foto/sufit-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="The vaulted ceiling at U Edka painted with PRL-style slogans and signs" />
   </section>

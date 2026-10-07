@@ -4,6 +4,11 @@
 <meta charset="utf-8" />
 <title>U Edka – Zapiekanki w stylu PRL | Mostowa 4, Kraków Kazimierz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>
+  // Podpowiedź języka: tylko podświetla przełącznik, niczego nie przekierowuje.
+  try { var l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+    if (l && l.indexOf('pl') !== 0) document.documentElement.classList.add('show-lang-hint'); } catch (e) {}
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17300910083"></script>
 <script>
@@ -182,9 +187,15 @@
   /* ── Język ─────────────────────────────── */
   .lang-switch {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
-    padding-top: 12px;
+    padding: 12px 0 8px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
   }
+  section[id] { scroll-margin-top: 56px; }
   .lang-switch a {
     font-size: 13px;
     font-weight: 700;
@@ -195,6 +206,14 @@
     border: 2px solid var(--navy);
     border-radius: 999px;
   }
+  .lang-hint {
+    display: none;
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .show-lang-hint .lang-hint { display: inline; }
 
   /* ── Hero ───────────────────────────────── */
   .hero {
@@ -358,6 +377,7 @@
 <main class="wrap">
 
   <nav class="lang-switch" aria-label="Język">
+    <span class="lang-hint" lang="en">Prefer English? →</span>
     <a href="/en" hreflang="en" lang="en" data-track="jezyk" data-track-location="en">English</a>
   </nav>
 
@@ -380,14 +400,14 @@
   </section>
 
   <!-- 2. PRODUKT -->
-  <section class="product" id="zapiekanki">
+  <section class="product">
     <h2>Zapiekanki <span class="accent">na Kazimierzu</span></h2>
     <p>Zapiekanka to zapieczona połówka bagietki z pieczarkami i serem – legenda z czasów PRL, która do dziś króluje na krakowskim Kazimierzu.</p>
     <p>U Edka zjesz ją przy ulicy Mostowej 4. Pilnujemy, żeby smakowała tak, jak powinna.</p>
   </section>
 
   <!-- 3. ZDJĘCIA -->
-  <section class="photos" id="lokal" aria-label="Zdjęcia lokalu">
+  <section class="photos" aria-label="Zdjęcia lokalu">
     <img src="assets/uedka/foto/wnetrze-800.webp" srcset="assets/uedka/foto/wnetrze-320.webp 320w, assets/uedka/foto/wnetrze-480.webp 480w, assets/uedka/foto/wnetrze-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="Wnętrze U Edka – bar, stołki w czerwoną kratkę i sklepienie z plakatami w stylu PRL" />
     <img src="assets/uedka/foto/sufit-800.webp" srcset="assets/uedka/foto/sufit-320.webp 320w, assets/uedka/foto/sufit-480.webp 480w, assets/uedka/foto/sufit-800.webp 800w" sizes="(min-width: 760px) 335px, calc(50vw - 25px)" width="800" height="1067" loading="lazy" decoding="async" alt="Sklepienie lokalu U Edka pomalowane w hasła i szyldy w stylu PRL" />
   </section>
