@@ -111,7 +111,7 @@
     --paper: #FBF6E4;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html:focus-within { scroll-behavior: smooth; }
   html, body {
     margin: 0; padding: 0;
     background: var(--paper);
@@ -120,7 +120,7 @@
     -webkit-font-smoothing: antialiased;
   }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
+    html:focus-within { scroll-behavior: auto; }
   }
   .wrap {
     max-width: 720px;
