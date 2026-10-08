@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kartka na zapiekankę – karta</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800;900&family=Courier+Prime:wght@700&family=Oswald:wght@300;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   KARTA LOJALNOŚCIOWA – ROZMIAR KARTY KREDYTOWEJ
+   85,6 × 54 mm (ISO/IEC 7810 ID-1), dwustronna.
+
+   AWERS  – wzór PRL: pasek górny, 4 kupony z boków,
+            pole środkowe z logo, pasek dolny.
+   REWERS – 3 pola opisowe + 6 pól na pieczątki
+            (wnętrze ok. 25 × 18 mm).
+
+   Wszystkie wymiary wewnątrz karty są w cqw
+   (1cqw = 1% szerokości karty), więc karta skaluje się
+   w całości – na ekranie i w druku.
+   Treść edytujesz raz: w <template id="awers"> i <template id="rewers">.
+   ========================================================= */
+:root {
+  --paper:      #d4dcb8;
+  --ink:        #2c4f33;
+  --ink-soft:   rgba(44, 79, 51, .5);
+  --red:        #c2302a;
+  --field:      #f1f4e4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  padding: 24px 16px;
+  background: #2f3a31;
+  color: #dfe8d6;
+  font: 14px/1.4 system-ui, sans-serif;
+}
+
+/* ---------- Karta (wspólne) ---------- */
+.karta {
+  position: relative;
+  width: var(--card-w, 85.6mm);
+  aspect-ratio: 85.6 / 54;
+  container-type: inline-size;
+  display: grid;
+  overflow: hidden;
+  border-radius: 3.7cqw;            /* 3,18 mm – róg karty ID-1 */
+  background-color: var(--paper);
+  /* tekstura papieru celulozowego: drobinki, drzazgi, włókna ciemne, włókna ciemne 2, włókna jasne, ziarno, plamy */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5' numOctaves='1' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.18 0 0 0 0 0.1 7 0 0 0 -5.109999999999999'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23f%29'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.11' numOctaves='1' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.38 0 0 0 0 0.28 0 0 0 0 0.12 7 0 0 0 -4.97'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23f%29'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.03 .5' numOctaves='2' seed='3' stitchTiles='stitch' result='a'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='2' seed='21' stitchTiles='stitch' result='d'/%3E%3CfeDisplacementMap in='a' in2='d' scale='60' xChannelSelector='R' yChannelSelector='G'/%3E%3CfeColorMatrix values='0 0 0 0 0.28 0 0 0 0 0.3 0 0 0 0 0.16 3.4 0 0 0 -2.21'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23f%29'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='380' height='380'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5 .03' numOctaves='2' seed='5' stitchTiles='stitch' result='a'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='2' seed='22' stitchTiles='stitch' result='d'/%3E%3CfeDisplacementMap in='a' in2='d' scale='60' xChannelSelector='R' yChannelSelector='G'/%3E%3CfeColorMatrix values='0 0 0 0 0.28 0 0 0 0 0.3 0 0 0 0 0.16 3.4 0 0 0 -2.21'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23f%29'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035 .4' numOctaves='2' seed='9' stitchTiles='stitch' result='a'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='2' seed='23' stitchTiles='stitch' result='d'/%3E%3CfeDisplacementMap in='a' in2='d' scale='60' xChannelSelector='R' yChannelSelector='G'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 0.93 3 0 0 0 -1.8900000000000001'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23f%29'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.25 0 0 0 0 0.12 0.32 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23f%29'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.005' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.5 0 0 0 0 0.25 1.1 0 0 0 -0.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23f%29'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 20% 25%, rgba(245,248,220,.45), transparent 55%),
+    radial-gradient(ellipse at 85% 80%, rgba(140,130,60,.2), transparent 50%),
+    radial-gradient(ellipse at 45% 105%, rgba(160,120,60,.18), transparent 60%);
+  background-size: 150px, 250px, 210px, 190px, 230px, 100px, 350px, auto, auto, auto;
+  box-shadow: inset 0 0 1.6cqw rgba(70,90,40,.35);
+  padding: 1.6cqw;                  /* biały pasek bezpieczeństwa przy cięciu */
+  color: var(--ink);
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---------- Segment ---------- */
+.seg {
+  position: relative;
+  outline: .22cqw solid var(--ink-soft);
+  outline-offset: -.11cqw;
+  padding: 1.2cqw;
+  min-width: 0;
+  min-height: 0;
+}
+.seg__ramka {
+  width: 100%;
+  height: 100%;
+  border: .7cqw solid var(--red);
+  border-radius: .5cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .25cqw;
+  text-align: center;
+  line-height: 1.02;
+  font-weight: 800;
+  font-size: 2.75cqw;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 0 .1cqw rgba(44,79,51,.55);
+}
+.czer { color: var(--red); }
+.linia { display: block; border-bottom: .22cqw solid var(--ink); }
+
+/* =========================================================
+   AWERS
+   ========================================================= */
+.karta--awers {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 10fr 17fr 17fr 10fr;
+  grid-template-areas:
+    "gora gora gora gora gora"
+    "a1   pole pole pole b1"
+    "a2   pole pole pole b2"
+    "dol  dol  dol  dol  dol";
+}
+.awers-gora { grid-area: gora; }
+.awers-dol  { grid-area: dol; }
+#a1 { grid-area: a1; } #a2 { grid-area: a2; }
+#b1 { grid-area: b1; } #b2 { grid-area: b2; }
+.awers-pole { grid-area: pole; padding: 1.2cqw; }
+
+.pasek .seg__ramka {
+  flex-direction: row;
+  gap: 1.6cqw;
+  font-size: 3.1cqw;
+  letter-spacing: .12em;
+}
+.pasek .kropka { color: var(--red); }
+
+.pole__karta {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--field);
+  border: .7cqw solid var(--red);
+  box-shadow: inset 0 0 0 .6cqw var(--field), inset 0 0 0 .85cqw var(--ink-soft);
+  padding: 2cqw 3cqw 1.6cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.pole__nr {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  gap: 1cqw;
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-weight: 700;
+  font-size: 2cqw;
+  position: relative;
+  z-index: 1;
+}
+.pole__nr .linia { flex: 1; margin-bottom: .35cqw; }
+
+/* LOGO – podmień <img src> albo zawartość #logo */
+.logo {
+  position: relative;
+  z-index: 1;
+  width: 52%;
+  margin-top: 1.6cqw;
+  line-height: 0;
+}
+.logo img { width: 100%; height: auto; display: block; }
+
+.pole__tytul {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.4cqw;
+  font-weight: 900;
+  font-size: 5.6cqw;
+  line-height: .95;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+.pole__podtytul {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  align-self: stretch;
+  border-top: .22cqw solid var(--ink);
+  padding-top: .7cqw;
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-weight: 700;
+  font-size: 1.85cqw;
+  line-height: 1.15;
+  text-transform: uppercase;
+  text-align: center;
+}
+.nadruk {
+  position: absolute;
+  pointer-events: none;
+  font-family: "Oswald", serif;
+  font-weight: 300;
+  line-height: 1;
+  z-index: 0;
+}
+.nadruk--z6 {
+  right: 3%;
+  top: 50%;
+  transform: translateY(-52%) scaleY(1.12);
+  font-size: 22cqw;
+  color: rgba(200, 45, 40, .13);
+}
+
+/* =========================================================
+   REWERS
+   ========================================================= */
+.karta--rewers {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 11fr 21.5fr 21.5fr;
+}
+.rew-opis .seg__ramka {
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 1cqw;
+  padding: 0 1.4cqw 1.3cqw;
+  font-size: 2.4cqw;
+}
+.rew-opis .linia { flex: 1; margin-bottom: .3cqw; }
+
+.seg--pieczatka .seg__ramka {
+  justify-content: space-between;
+  padding: .9cqw 1.2cqw;
+}
+.seg--pieczatka .nr {
+  align-self: flex-start;
+  font-size: 3.6cqw;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+}
+.seg--pieczatka .opis {
+  font-size: 1.7cqw;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--ink-soft);
+  text-shadow: none;
+}
+/* ostatnie pole – wyróżnione */
+.seg--pieczatka.ostatnia .opis { color: var(--red); }
+
+/* =========================================================
+   PODGLĄD NA EKRANIE
+   ========================================================= */
+.podglad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.podglad figure { display: grid; gap: 8px; justify-items: center; }
+.podglad .karta {
+  --card-w: min(calc(100vw - 32px), 560px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.45), inset 0 0 1.6cqw rgba(70,90,40,.35);
+}
+.podglad figcaption { letter-spacing: .1em; text-transform: uppercase; font-size: 12px; opacity: .8; }
+.uwaga { max-width: 640px; margin: 24px auto 0; text-align: center; opacity: .85; }
+.arkusze { display: none; }
+
+/* =========================================================
+   DRUK: A4 pionowo, 10 kart na stronę (2 × 5)
+   Strona 1 = awersy, strona 2 = rewersy.
+   Układ jest symetryczny, więc przy druku dwustronnym
+   (odwracanie wzdłuż dłuższej krawędzi) karty się pokrywają.
+   ========================================================= */
+@page { size: A4 portrait; margin: 0; }
+@media print {
+  html, body { width: 210mm; background: #fff; padding: 0; min-height: 0; }
+  .podglad, .uwaga { display: none; }
+  .arkusze { display: block; }
+  .arkusz {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    display: grid;
+    grid-template-columns: repeat(2, 85.6mm);
+    grid-template-rows: repeat(5, 54mm);
+    place-content: center;
+    break-after: page;
+    overflow: hidden;
+  }
+  .arkusz:last-child { break-after: auto; }
+  .arkusz .karta { --card-w: 85.6mm; border-radius: 0; box-shadow: none; }
+  .ciecie { position: absolute; background: #000; }
+  .ciecie--pion { width: .2mm; height: 6mm; }
+  .ciecie--poz  { height: .2mm; width: 8mm; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== AWERS ===================== -->
+<template id="awers">
+<div class="karta karta--awers" aria-label="Awers: U Edka – kartka na zapiekankę">
+
+  <section class="seg pasek awers-gora"><div class="seg__ramka">
+    <span>Zapiekanki</span><span class="kropka">★</span><span>w stylu</span><span class="kropka">★</span><span>PRL</span>
+  </div></section>
+
+  <section id="a1" class="seg"><div class="seg__ramka">
+    <span>Pieczątki</span><span>6 szt.</span><span class="czer">na kartę</span>
+  </div></section>
+  <section id="a2" class="seg"><div class="seg__ramka">
+    <span>Przydział</span><span>1 zapiek.</span><span class="czer">gratis</span>
+  </div></section>
+
+  <section id="b1" class="seg"><div class="seg__ramka">
+    <span>Ważne</span><span>do</span><span class="czer">odwołania</span>
+  </div></section>
+  <section id="b2" class="seg"><div class="seg__ramka">
+    <span>Pieczątki</span><span>na</span><span class="czer">odwrocie</span>
+  </div></section>
+
+  <section class="awers-pole"><div class="pole__karta">
+    <div class="nadruk nadruk--z6" aria-hidden="true">Z-6</div>
+    <div class="pole__nr">K. Z. Nr <span class="linia"></span></div>
+    <div id="logo" class="logo">
+      <img src="assets/uedka/uedka-logo-landing-800.png" width="800" height="170" alt="U Edka">
+    </div>
+    <h1 class="pole__tytul">Kartka na<br>zapiekankę</h1>
+    <p class="pole__podtytul">Zbierz 6 pieczątek<br>i odbierz 1 zapiekankę gratis</p>
+  </div></section>
+
+  <section class="seg pasek awers-dol"><div class="seg__ramka">
+    <span>Mostowa 4</span><span class="kropka">★</span><span>Kraków</span><span class="kropka">★</span><span>@u.edka</span>
+  </div></section>
+
+</div>
+</template>
+
+<!-- ===================== REWERS ===================== -->
+<template id="rewers">
+<div class="karta karta--rewers" aria-label="Rewers: 6 pól na pieczątki">
+
+  <section id="r-obywatel" class="seg rew-opis"><div class="seg__ramka">
+    <span>Obywatel</span><span class="linia"></span>
+  </div></section>
+  <section id="r-wydano" class="seg rew-opis"><div class="seg__ramka">
+    <span class="czer">Wydano dnia</span><span class="linia"></span>
+  </div></section>
+  <section id="r-podpis" class="seg rew-opis"><div class="seg__ramka">
+    <span>Podpis</span><span class="linia"></span>
+  </div></section>
+
+  <section id="p1" class="seg seg--pieczatka"><div class="seg__ramka"><span class="nr">1</span><span class="opis">pieczątka</span></div></section>
+  <section id="p2" class="seg seg--pieczatka"><div class="seg__ramka"><span class="nr">2</span><span class="opis">pieczątka</span></div></section>
+  <section id="p3" class="seg seg--pieczatka"><div class="seg__ramka"><span class="nr">3</span><span class="opis">pieczątka</span></div></section>
+  <section id="p4" class="seg seg--pieczatka"><div class="seg__ramka"><span class="nr">4</span><span class="opis">pieczątka</span></div></section>
+  <section id="p5" class="seg seg--pieczatka"><div class="seg__ramka"><span class="nr">5</span><span class="opis">pieczątka</span></div></section>
+  <section id="p6" class="seg seg--pieczatka ostatnia"><div class="seg__ramka"><span class="nr">6</span><span class="opis">= zapiekanka gratis</span></div></section>
+
+</div>
+</template>
+
+<div class="podglad" id="podglad">
+  <figure><div data-wzor="awers"></div><figcaption>Awers</figcaption></figure>
+  <figure><div data-wzor="rewers"></div><figcaption>Rewers</figcaption></figure>
+</div>
+<p class="uwaga">Druk (Chrome): A4 pionowo · skala 100% · marginesy „brak” · zaznacz „Grafika tła” · druk dwustronny, odwracanie wzdłuż dłuższej krawędzi. 10 kart na arkusz.</p>
+
+<div class="arkusze">
+  <div class="arkusz" data-arkusz="awers"></div>
+  <div class="arkusz" data-arkusz="rewers"></div>
+</div>
+
+<script>
+(function () {
+  function wstaw(cel, nazwa) {
+    cel.appendChild(document.getElementById(nazwa).content.cloneNode(true));
+  }
+  document.querySelectorAll('[data-wzor]').forEach(function (el) {
+    wstaw(el, el.getAttribute('data-wzor'));
+  });
+
+  // arkusze A4: 2 × 5 kart, znaczniki cięcia tylko na stronie awersów
+  var W = 85.6, H = 54, x0 = (210 - 2 * W) / 2, y0 = (297 - 5 * H) / 2;
+  document.querySelectorAll('[data-arkusz]').forEach(function (ark) {
+    var nazwa = ark.getAttribute('data-arkusz');
+    for (var i = 0; i < 10; i++) wstaw(ark, nazwa);
+    if (nazwa !== 'awers') return;
+    function znak(cls, x, y) {
+      var e = document.createElement('div');
+      e.className = 'ciecie ' + cls;
+      e.style.left = x + 'mm'; e.style.top = y + 'mm';
+      ark.appendChild(e);
+    }
+    for (var c = 0; c <= 2; c++) {
+      var x = x0 + c * W;
+      znak('ciecie--pion', x - .1, y0 - 8);
+      znak('ciecie--pion', x - .1, y0 + 5 * H + 2);
+    }
+    for (var r = 0; r <= 5; r++) {
+      var y = y0 + r * H;
+      znak('ciecie--poz', x0 - 10, y - .1);
+      znak('ciecie--poz', x0 + 2 * W + 2, y - .1);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

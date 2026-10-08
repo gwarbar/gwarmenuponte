@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kartka P-3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800&family=Courier+Prime:wght@700&family=Oswald:wght@300&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   USTAWIENIA PROJEKTU
+   --card-w     szerokość kartki. Domyślnie responsywna;
+                wpisz np. 1280px, żeby ustawić dokładny wymiar.
+   --design-w/h siatka projektowa (px oryginału 640×446).
+                Każdy element ma --x --y --w --h w tych jednostkach,
+                więc przesuwasz go, zmieniając jedną liczbę.
+   ========================================================= */
+:root {
+  --card-w: min(calc(100vw - 32px), 960px);
+  --design-w: 640;
+  --design-h: 446;
+
+  --paper:       #f0bf96;
+  --paper-light: #f7d6b6;
+  --paper-dark:  #e3ac80;
+  --ink:         #6e3b25;
+  --ink-soft:    rgba(110, 59, 37, .55);
+  --field:       #f9e9db;
+  --overprint:   rgba(242, 130, 55, .72);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #3b302b;
+}
+
+/* ---------- Kartka ---------- */
+.kartka {
+  position: relative;
+  width: var(--card-w);
+  aspect-ratio: 640 / 446;
+  container-type: inline-size;
+  overflow: hidden;
+  background-color: var(--paper);
+  /* tekstura papieru: szum + plamy (warstwy, nie obraz kartki) */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .22 0 0 0 0 .12 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 18% 30%, rgba(255,235,210,.45), transparent 55%),
+    radial-gradient(ellipse at 85% 75%, rgba(200,120,70,.18), transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(190,110,60,.15), transparent 60%);
+  box-shadow: 0 10px 40px rgba(0,0,0,.45), inset 0 0 1.6cqw rgba(150,80,40,.35);
+  color: var(--ink);
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+}
+
+/* Wspólne pozycjonowanie: każdy element ustawiasz zmiennymi
+   --x --y --w --h (jednostki projektu 640×446). */
+.el {
+  position: absolute;
+  left:   calc(var(--x) / var(--design-w) * 100%);
+  top:    calc(var(--y) / var(--design-h) * 100%);
+  width:  calc(var(--w) / var(--design-w) * 100%);
+  height: calc(var(--h) / var(--design-h) * 100%);
+  /* dodatkowe przesunięcie / skalowanie pojedynczego elementu */
+  transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--rot, 0deg)) scale(var(--s, 1));
+}
+
+/* ---------- Kupon ---------- */
+.kupon {
+  /* linia cięcia (perforacja) wokół kuponu */
+  outline: .16cqw solid var(--ink-soft);
+  outline-offset: -.08cqw;
+  padding: 1.55cqw 1.7cqw;
+}
+.kupon__ramka {
+  width: 100%;
+  height: 100%;
+  border: .42cqw solid var(--ink);
+  border-radius: .35cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .05cqw;
+  text-align: center;
+  line-height: 1.02;
+  font-weight: 800;
+  font-size: 3.05cqw;
+  letter-spacing: .02em;
+  /* lekko „wyblakły" druk */
+  text-shadow: 0 0 .08cqw rgba(110,59,37,.6);
+}
+.kupon__ramka span { display: block; white-space: nowrap; }
+.kupon__data { letter-spacing: .06em; }
+
+/* ---------- Pole środkowe ---------- */
+.pole {
+  background: var(--field);
+  border: .5cqw solid var(--ink);
+  box-shadow: inset 0 0 0 .5cqw var(--field), inset 0 0 0 .66cqw var(--ink-soft),
+              inset 0 0 2cqw rgba(200,140,90,.18);
+  padding: 3.6cqw 3.4cqw 2.4cqw 6cqw;
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier Prime", "Courier New", monospace;
+  font-weight: 700;
+}
+.pole__nr {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.4cqw;
+  font-family: "Roboto Condensed", "Arial Narrow", sans-serif;
+  font-weight: 800;
+  font-size: 3.6cqw;
+  letter-spacing: .08em;
+  line-height: 1;
+}
+.linia { flex: 1; border-bottom: .2cqw solid var(--ink); height: 0; margin-bottom: .2cqw; }
+.pole__linia { border-bottom: .2cqw solid var(--ink); margin-top: 4.6cqw; }
+.pole__opis {
+  font-size: 1.85cqw;
+  text-align: center;
+  margin-top: .9cqw;
+  padding-left: 9cqw;
+}
+.pole__linia--2 { margin-top: 2.4cqw; }
+.pole__adres {
+  font-size: 1.85cqw;
+  margin-top: 1.2cqw;
+  letter-spacing: .02em;
+}
+
+/* ---------- Nadruki (osobne elementy) ---------- */
+.nadruk {
+  pointer-events: none;
+  color: var(--overprint);
+  mix-blend-mode: multiply;
+  font-family: "Oswald", "Bodoni 72", serif;
+  font-weight: 300;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nadruk--p3 {
+  font-size: 23cqw;
+  letter-spacing: .02em;
+  transform: translate(var(--dx, 0), var(--dy, 0)) scaleY(1.12) rotate(var(--rot, 0deg));
+}
+.nadruk--bok {
+  font-size: 5.6cqw;
+  writing-mode: vertical-rl;
+  letter-spacing: .12em;
+}
+</style>
+</head>
+<body>
+
+<div class="kartka" role="img" aria-label="Kartka żywnościowa P-3, listopad 1982">
+
+  <!-- ===== Rząd 1 ===== -->
+  <div class="el kupon" style="--x:0;   --y:0; --w:128; --h:110"><div class="kupon__ramka"><span>Mąka</span><span>1000 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:128; --y:0; --w:128; --h:110"><div class="kupon__ramka"><span>Cukierki</span><span>250 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:256; --y:0; --w:128; --h:110"><div class="kupon__ramka"><span>Cukier</span><span>500 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:384; --y:0; --w:128; --h:110"><div class="kupon__ramka"><span>Cukier</span><span>1500 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:512; --y:0; --w:128; --h:110"><div class="kupon__ramka"><span>Papierosy</span><span>6 pacz.</span><span class="kupon__data">XI 82</span></div></div>
+
+  <!-- ===== Rząd 2 ===== -->
+  <div class="el kupon" style="--x:0;   --y:110; --w:128; --h:108"><div class="kupon__ramka"><span>P. zbożowe</span><span>1000 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:512; --y:110; --w:128; --h:108"><div class="kupon__ramka"><span>Papierosy</span><span>6 pacz.</span><span class="kupon__data">XI 82</span></div></div>
+
+  <!-- ===== Rząd 3 ===== -->
+  <div class="el kupon" style="--x:0;   --y:218; --w:128; --h:108"><div class="kupon__ramka"><span>Proszek</span><span>200 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:512; --y:218; --w:128; --h:108"><div class="kupon__ramka"><span>Alkohol</span><span>1 but.</span><span class="kupon__data">XI 82</span></div></div>
+
+  <!-- ===== Rząd 4 ===== -->
+  <div class="el kupon" style="--x:0;   --y:326; --w:128; --h:120"><div class="kupon__ramka"><span>Proszek</span><span>100 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:128; --y:326; --w:128; --h:120"><div class="kupon__ramka"><span>R-PIII</span><span>10</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:256; --y:326; --w:128; --h:120"><div class="kupon__ramka"><span>Tłuszcze</span><span>375 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:384; --y:326; --w:128; --h:120"><div class="kupon__ramka"><span>Czekolada</span><span>100 g</span><span class="kupon__data">XI 82</span></div></div>
+  <div class="el kupon" style="--x:512; --y:326; --w:128; --h:120"><div class="kupon__ramka"><span>R-PIII</span><span>20</span><span class="kupon__data">XI 82</span></div></div>
+
+  <!-- ===== Pole środkowe ===== -->
+  <div class="el pole" style="--x:140; --y:122; --w:360; --h:192">
+    <div class="pole__nr">W. Z. Nr <span class="linia"></span></div>
+    <div class="pole__linia"></div>
+    <div class="pole__opis">nazwisko i imię</div>
+    <div class="pole__linia pole__linia--2"></div>
+    <div class="pole__adres">adres: gmina-miasto-dzielnica</div>
+  </div>
+
+  <!-- ===== Nadruki (na wierzchu, osobne elementy) ===== -->
+  <div class="el nadruk nadruk--p3" style="--x:180; --y:110; --w:300; --h:210">P-3</div>
+  <div class="el nadruk nadruk--bok" style="--x:592; --y:10; --w:44; --h:300">XI·1982</div>
+
+</div>
+
+</body>
+</html>
